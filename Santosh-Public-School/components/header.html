@@ -1,0 +1,84 @@
+<!-- ========== STICKY WHATSAPP BUTTON ========== -->
+<div class="sps-whatsapp-btn">
+  <a href="https://wa.me/919911826993?text=Hello%2C%20I%20would%20like%20to%20know%20more%20about%20admissions%20at%20Santosh%20Public%20School." target="_blank" rel="noopener" title="Chat with us on WhatsApp" aria-label="Chat on WhatsApp">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12.004 2C6.486 2 2 6.486 2 12.004c0 1.925.55 3.802 1.593 5.416L2 22l4.71-1.552a10 10 0 0 0 5.294 1.514h.004c5.518 0 10.002-4.486 10.002-10.004C22.01 6.486 17.524 2 12.005 2Zm.001 18.324h-.003a8.31 8.31 0 0 1-4.242-1.162l-.305-.181-3.152 1.04 1.055-3.07-.198-.315a8.31 8.31 0 0 1-1.276-4.432c0-4.596 3.74-8.336 8.337-8.336 2.227 0 4.32.868 5.894 2.443a8.28 8.28 0 0 1 2.44 5.897c0 4.596-3.74 8.116-8.55 8.116Z"/></svg>
+  </a>
+</div>
+
+<!-- ========== ANNOUNCEMENT TICKER ========== -->
+<div class="sps-ticker">
+  <div class="sps-ticker-inner">
+    <span>Admissions Open for Session 2026–27 — Nursery to Class 5</span>
+    <span>English Medium | CBSE Pattern | Activity-Based Learning</span>
+    <span>Safe Campus | Qualified Teachers | Transport Available</span>
+    <span>Contact: +91 99118 26993 | Bisrakh Road, Chhapraula, Greater Noida West</span>
+    <span>Admissions Open for Session 2026–27 — Nursery to Class 5</span>
+    <span>English Medium | CBSE Pattern | Activity-Based Learning</span>
+  </div>
+</div>
+
+<!-- ========== MAIN HEADER ========== -->
+<header class="bg-white shadow-md sticky top-0 z-50">
+
+  <div class="max-w-7xl mx-auto px-4">
+    <div class="flex items-center justify-between h-20">
+
+      <!-- Logo -->
+      <a href="#" onclick="loadPage('home')" class="flex items-center gap-3">
+        <img
+          src="assets/images/school-logo.png"
+          alt="Santosh Public School Logo"
+          class="w-14 h-14 object-contain drop-shadow-md"
+          onerror="this.src='assets/images/logo.png'"
+        >
+        <div>
+          <h2 class="font-black text-lg leading-tight" style="color: var(--sps-red);">
+            Santosh Public School
+          </h2>
+          <p class="text-xs font-semibold" style="color: var(--sps-green);">
+            English Medium · CBSE Pattern
+          </p>
+        </div>
+      </a>
+
+      <!-- Desktop Menu -->
+      <nav class="hidden lg:flex items-center gap-6 font-semibold text-sm text-gray-700">
+        <a href="#" onclick="loadPage('home')"      class="sps-nav-link hover:text-red-700 transition">Home</a>
+        <a href="#" onclick="loadPage('about-us')"  class="sps-nav-link hover:text-red-700 transition">About</a>
+        <a href="#" onclick="loadPage('admission')" class="sps-nav-link hover:text-red-700 transition">Admission</a>
+        <a href="#" onclick="loadPage('blog')"      class="sps-nav-link hover:text-red-700 transition">Blog</a>
+        <a href="#" onclick="loadPage('contact')"   class="sps-nav-link hover:text-red-700 transition">Contact</a>
+        <a href="#" onclick="loadPage('admission')" class="sps-admit-btn ml-2">Apply Now →</a>
+      </nav>
+
+      <!-- Mobile Burger -->
+      <button id="menuBtn" class="lg:hidden flex flex-col gap-1.5 p-2" aria-label="Open menu">
+        <span class="w-6 h-0.5 bg-gray-700 block transition-all"></span>
+        <span class="w-6 h-0.5 bg-gray-700 block transition-all"></span>
+        <span class="w-6 h-0.5 bg-gray-700 block transition-all"></span>
+      </button>
+
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobileMenu" class="hidden lg:hidden bg-white border-t border-gray-100 shadow-lg">
+    <nav class="flex flex-col text-sm font-semibold">
+      <a href="#" onclick="loadPage('home');document.getElementById('mobileMenu').classList.add('hidden')"
+         class="px-6 py-4 border-b border-gray-50 hover:bg-red-50 hover:text-red-700 transition">🏠 Home</a>
+      <a href="#" onclick="loadPage('about-us');document.getElementById('mobileMenu').classList.add('hidden')"
+         class="px-6 py-4 border-b border-gray-50 hover:bg-red-50 hover:text-red-700 transition">🏫 About Us</a>
+      <a href="#" onclick="loadPage('admission');document.getElementById('mobileMenu').classList.add('hidden')"
+         class="px-6 py-4 border-b border-gray-50 hover:bg-red-50 hover:text-red-700 transition">🎓 Admission</a>
+      <a href="#" onclick="loadPage('blog');document.getElementById('mobileMenu').classList.add('hidden')"
+         class="px-6 py-4 border-b border-gray-50 hover:bg-red-50 hover:text-red-700 transition">📰 Blog</a>
+      <a href="#" onclick="loadPage('contact');document.getElementById('mobileMenu').classList.add('hidden')"
+         class="px-6 py-4 border-b border-gray-50 hover:bg-red-50 hover:text-red-700 transition">📞 Contact</a>
+      <div class="p-4">
+        <a href="#" onclick="loadPage('admission');document.getElementById('mobileMenu').classList.add('hidden')"
+           class="sps-admit-btn block text-center py-3 rounded-lg">Apply for Admission →</a>
+      </div>
+    </nav>
+  </div>
+
+</header>

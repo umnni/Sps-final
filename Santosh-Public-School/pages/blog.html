@@ -1,0 +1,37 @@
+<!-- BLOG LISTING PAGE -->
+<section class="py-16" style="background: linear-gradient(135deg, #7F1D1D 0%, #B91C1C 40%, #166534 100%); position:relative; overflow:hidden;">
+  <!-- Decorative circles like hero section -->
+  <div class="max-w-7xl mx-auto px-6 text-center" style="position:relative;">
+    <span class="sps-label-red inline-block px-4 py-1 rounded-full text-sm font-bold uppercase mb-4" style="background:rgba(255,255,255,0.2);color:#fff;">📰 OUR BLOG</span>
+    <h1 style="font-size:clamp(32px,4vw,52px); font-weight:900; color:#fff; margin-top:16px;">Latest News & Updates</h1>
+    <p style="color:rgba(255,255,255,0.85); font-size:18px; max-width:600px; margin:16px auto 0;">Stay updated with the latest happenings, educational insights, and school news from Santosh Public School.</p>
+  </div>
+</section>
+
+<!-- Search Bar -->
+<section class="max-w-7xl mx-auto px-6 -mt-6 relative z-10">
+  <div class="bg-white rounded-2xl shadow-lg p-4 flex items-center gap-3">
+    <span class="text-2xl">🔍</span>
+    <input type="text" id="blogSearchInput" placeholder="Search blogs..." class="w-full outline-none text-gray-700 text-lg border-none bg-transparent" />
+  </div>
+</section>
+
+<!-- Blog Grid -->
+<section class="max-w-7xl mx-auto px-6 py-12">
+  <div id="blogGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <!-- Blog cards rendered by JS -->
+  </div>
+  
+  <!-- Empty State -->
+  <div id="blogEmpty" class="hidden text-center py-20">
+    <div style="font-size:80px;margin-bottom:20px;">📝</div>
+    <h2 class="text-2xl font-bold text-gray-700 mb-3">Coming Soon!</h2>
+    <p class="text-gray-500 max-w-md mx-auto">We're working on exciting blog posts about education, school events, and learning tips. Stay tuned!</p>
+  </div>
+  
+  <!-- Loading State -->
+  <div id="blogLoading" class="text-center py-20">
+    <div class="sps-blog-spinner"></div>
+    <p class="text-gray-500 mt-4">Loading blogs...</p>
+  </div>
+</section>

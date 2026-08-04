@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog Editor — Santosh Public School Admin</title>
+  <meta name="robots" content="noindex, nofollow">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/blog-admin.css">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            sps: {
+              red: '#B91C1C',
+              'red-mid': '#DC2626',
+              'red-light': '#FEE2E2',
+              green: '#166534',
+              'green-mid': '#16A34A',
+              'green-light': '#DCFCE7',
+              blue: '#1E3A8A',
+              'blue-mid': '#2563EB',
+              'blue-light': '#DBEAFE',
+              gold: '#D97706',
+              'gold-light': '#FEF3C7',
+            }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-gray-100 h-screen overflow-hidden flex flex-col font-sans text-gray-800">
+
+  <!-- Login Screen -->
+  <div id="loginScreen" class="fixed inset-0 z-50 flex items-center justify-center bg-gray-900 bg-opacity-75 transition-opacity duration-300">
+    <div class="bg-white rounded-lg shadow-xl w-full max-w-md overflow-hidden">
+      <div class="bg-gradient-to-r from-sps-red to-sps-red-mid p-6 text-center text-white">
+        <h2 class="text-2xl font-bold">Admin Login</h2>
+        <p class="text-sm opacity-80 mt-1">Santosh Public School Blog Admin</p>
+      </div>
+      <form id="loginForm" class="p-6">
+        <div class="mb-4">
+          <label for="adminPassword" class="block text-sm font-medium text-gray-700 mb-1">Password</label>
+          <input type="password" id="adminPassword" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-sps-red focus:border-transparent" required>
+        </div>
+        <div id="loginError" class="hidden mb-4 text-sm text-red-600">Invalid password. Please try again.</div>
+        <button type="submit" class="w-full bg-sps-red hover:bg-sps-red-mid text-white font-bold py-2 px-4 rounded transition duration-200">
+          Login
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Main Admin Layout -->
+  <div id="adminApp" class="hidden flex-1 flex overflow-hidden">
+    
+    <!-- Sidebar -->
+    <aside class="w-80 bg-white border-r border-gray-200 flex flex-col h-full shrink-0 z-20">
+      <div class="p-4 border-b border-gray-200 flex flex-col gap-4">
+        <div class="flex items-center justify-between">
+          <h1 class="text-xl font-bold text-gray-800 flex items-center gap-2">
+            <i class="fas fa-edit text-sps-red"></i> Blog Admin
+          </h1>
+          <button onclick="window.location.href='/'" class="text-sm text-gray-500 hover:text-sps-red" title="Back to site">
+            <i class="fas fa-external-link-alt"></i>
+          </button>
+        </div>
+        <button id="btnNewBlog" class="w-full bg-gradient-to-r from-sps-red to-sps-red-mid text-white rounded-md py-2 px-4 font-semibold hover:shadow-md transition shadow flex items-center justify-center gap-2">
+          <i class="fas fa-plus"></i> New Blog
+        </button>
+      </div>
+      
+      <div class="flex-1 overflow-y-auto p-2" id="blogListContainer">
+        <!-- Blog items will be injected here -->
+        <div class="flex items-center justify-center h-20 text-gray-400">
+          <i class="fas fa-spinner fa-spin mr-2"></i> Loading...
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 flex flex-col h-full bg-gray-50 overflow-y-auto relative">
+      <form id="editorForm" class="flex-1 flex flex-col max-w-5xl mx-auto w-full px-6 py-8">
+        
+        <!-- Top Bar / Title -->
+        <div class="mb-6">
+          <input type="text" id="blogTitle" placeholder="Enter blog title..." class="w-full text-4xl font-bold bg-transparent border-0 border-b-2 border-transparent hover:border-gray-300 focus:border-sps-red focus:ring-0 focus:outline-none transition-colors py-2 px-0 text-gray-900" required>
+          <div class="flex items-center mt-2 text-sm text-gray-500">
+            <span>Slug: /blog/</span>
+            <input type="text" id="blogSlug" class="bg-transparent border-none p-0 ml-1 focus:ring-0 text-gray-600 flex-1 min-w-0" readonly>
+          </div>
+        </div>
+
+        <!-- Meta & SEO Section -->
+        <div class="mb-6 bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
+          <button type="button" class="w-full px-4 py-3 flex items-center justify-between bg-gray-50 hover:bg-gray-100 transition-colors" onclick="document.getElementById('seoPanel').classList.toggle('hidden')">
+            <span class="font-semibold text-gray-700 flex items-center gap-2"><i class="fab fa-google text-blue-500"></i> SEO & Meta Data</span>
+            <i class="fas fa-chevron-down text-gray-400"></i>
+          </button>
+          <div id="seoPanel" class="hidden p-4 border-t border-gray-200">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div class="space-y-4">
+                <div>
+                  <label class="flex justify-between text-sm font-medium text-gray-700 mb-1">
+                    Meta Title <span id="metaTitleCount" class="text-xs text-gray-500">0/60</span>
+                  </label>
+                  <input type="text" id="metaTitle" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-sps-red focus:border-sps-red text-sm">
+                </div>
+                <div>
+                  <label class="flex justify-between text-sm font-medium text-gray-700 mb-1">
+                    Meta Description <span id="metaDescCount" class="text-xs text-gray-500">0/160</span>
+                  </label>
+                  <textarea id="metaDesc" rows="3" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-sps-red focus:border-sps-red text-sm"></textarea>
+                </div>
+              </div>
+              
+              <!-- SERP Preview -->
+              <div class="bg-white p-4 border border-gray-200 rounded-md">
+                <p class="text-xs font-semibold text-gray-500 mb-2 uppercase tracking-wide">Google Preview</p>
+                <div class="font-sans">
+                  <div class="text-sm text-green-700 mb-1 truncate">https://santoshpublicschool.com/blog/<span id="previewSlug"></span></div>
+                  <div class="text-xl text-blue-800 hover:underline cursor-pointer truncate" id="previewTitle">Blog Title</div>
+                  <div class="text-sm text-gray-600 mt-1 line-clamp-2" id="previewDesc">Blog description will appear here in the search results. Make it catchy and relevant to improve click-through rates.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Featured Image -->
+        <div class="mb-6 bg-white rounded-lg shadow-sm border border-gray-200 p-4">
+          <label class="block text-sm font-medium text-gray-700 mb-2">Featured Image</label>
+          <div id="featuredImageArea" class="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center cursor-pointer hover:bg-gray-50 transition relative overflow-hidden group min-h-[150px] flex items-center justify-center">
+            <input type="file" id="featuredImageInput" class="hidden" accept="image/*">
+            <input type="hidden" id="featuredImageUrl">
+            
+            <div id="featuredImagePlaceholder" class="space-y-2">
+              <i class="fas fa-cloud-upload-alt text-3xl text-gray-400"></i>
+              <p class="text-sm text-gray-600">Click or drag image here</p>
+            </div>
+            
+            <img id="featuredImagePreview" src="" alt="Preview" class="hidden absolute inset-0 w-full h-full object-cover">
+            
+            <div id="featuredImageActions" class="hidden absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+              <button type="button" id="btnRemoveFeaturedImage" class="bg-white text-red-600 hover:bg-red-50 p-2 rounded-full mx-2 shadow-lg">
+                <i class="fas fa-trash-alt"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Editor Container -->
+        <div class="bg-white rounded-lg shadow-sm border border-gray-200 flex flex-col flex-1 min-h-[600px] mb-20 relative">
+          
+          <!-- Toolbar -->
+          <div class="editor-toolbar sticky top-0 bg-gray-50 border-b border-gray-200 p-2 z-10 flex flex-wrap gap-2 items-center rounded-t-lg">
+            
+            <!-- Group 1 -->
+            <div class="btn-group flex gap-1 bg-white border border-gray-200 rounded p-1 shadow-sm">
+              <button type="button" class="toolbar-btn" data-command="undo" title="Undo"><i class="fas fa-undo"></i></button>
+              <button type="button" class="toolbar-btn" data-command="redo" title="Redo"><i class="fas fa-redo"></i></button>
+            </div>
+            
+            <!-- Group 2 -->
+            <div class="btn-group flex gap-1 bg-white border border-gray-200 rounded p-1 shadow-sm">
+              <select class="toolbar-select text-sm p-1 rounded hover:bg-gray-100 outline-none" id="formatBlock">
+                <option value="P">Paragraph</option>
+                <option value="H1">Heading 1</option>
+                <option value="H2">Heading 2</option>
+                <option value="H3">Heading 3</option>
+                <option value="H4">Heading 4</option>
+                <option value="H5">Heading 5</option>
+                <option value="H6">Heading 6</option>
+              </select>
+              
+              <div class="relative">
+                <select class="toolbar-select text-sm p-1 rounded hover:bg-gray-100 outline-none w-16" id="fontSize">
+                  <option value="">Size</option>
+                  <option value="12px">12px</option>
+                  <option value="14px">14px</option>
+                  <option value="16px">16px</option>
+                  <option value="18px">18px</option>
+                  <option value="20px">20px</option>
+                  <option value="24px">24px</option>
+                  <option value="28px">28px</option>
+                  <option value="32px">32px</option>
+                  <option value="36px">36px</option>
+                </select>
+              </div>
+
+              <div class="relative">
+                <select class="toolbar-select text-sm p-1 rounded hover:bg-gray-100 outline-none w-24" id="lineHeight" title="Line Height">
+                  <option value="">Line Height</option>
+                  <option value="1">1</option>
+                  <option value="1.15">1.15</option>
+                  <option value="1.3">1.3</option>
+                  <option value="1.5">1.5</option>
+                  <option value="1.6">1.6</option>
+                  <option value="1.8">1.8</option>
+                  <option value="2">2</option>
+                  <option value="2.5">2.5</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Group 3 -->
+            <div class="btn-group flex gap-1 bg-white border border-gray-200 rounded p-1 shadow-sm">
+              <button type="button" class="toolbar-btn font-bold" data-command="bold" title="Bold">B</button>
+              <button type="button" class="toolbar-btn italic" data-command="italic" title="Italic">I</button>
+              <button type="button" class="toolbar-btn underline" data-command="underline" title="Underline">U</button>
+              <button type="button" class="toolbar-btn line-through" data-command="strikeThrough" title="Strikethrough">S</button>
+            </div>
+
+            <!-- Colors -->
+            <div class="btn-group flex gap-1 bg-white border border-gray-200 rounded p-1 shadow-sm items-center px-2">
+              <label class="text-xs text-gray-500 mr-1" title="Text Color"><i class="fas fa-font"></i></label>
+              <input type="color" id="foreColor" class="w-6 h-6 p-0 border-0 cursor-pointer rounded" value="#000000" title="Text Color">
+              
+              <div class="w-px h-4 bg-gray-300 mx-1"></div>
+              
+              <label class="text-xs text-gray-500 mr-1" title="Highlight Color"><i class="fas fa-highlighter"></i></label>
+              <input type="color" id="hiliteColor" class="w-6 h-6 p-0 border-0 cursor-pointer rounded" value="#ffffff" title="Highlight Color">
+            </div>
+
+            <!-- Group 4 -->
+            <div class="btn-group flex gap-1 bg-white border border-gray-200 rounded p-1 shadow-sm">
+              <button type="button" class="toolbar-btn" data-command="justifyLeft" title="Align Left"><i class="fas fa-align-left"></i></button>
+              <button type="button" class="toolbar-btn" data-command="justifyCenter" title="Align Center"><i class="fas fa-align-center"></i></button>
+              <button type="button" class="toolbar-btn" data-command="justifyRight" title="Align Right"><i class="fas fa-align-right"></i></button>
+              <button type="button" class="toolbar-btn" data-command="justifyFull" title="Justify"><i class="fas fa-align-justify"></i></button>
+            </div>
+
+            <!-- Group 5 -->
+            <div class="btn-group flex gap-1 bg-white border border-gray-200 rounded p-1 shadow-sm">
+              <button type="button" class="toolbar-btn" data-command="insertUnorderedList" title="Bullet List"><i class="fas fa-list-ul"></i></button>
+              <button type="button" class="toolbar-btn" data-command="insertOrderedList" title="Numbered List"><i class="fas fa-list-ol"></i></button>
+              <button type="button" class="toolbar-btn" data-command="formatBlock" data-value="BLOCKQUOTE" title="Blockquote"><i class="fas fa-quote-right"></i></button>
+            </div>
+
+            <!-- Group 6 -->
+            <div class="btn-group flex gap-1 bg-white border border-gray-200 rounded p-1 shadow-sm">
+              <button type="button" class="toolbar-btn" id="btnLink" title="Insert Link"><i class="fas fa-link"></i></button>
+              <button type="button" class="toolbar-btn" id="btnImage" title="Insert Image"><i class="fas fa-image"></i></button>
+              <input type="file" id="editorImageInput" class="hidden" accept="image/*">
+            </div>
+            
+            <div class="btn-group flex gap-1 bg-white border border-gray-200 rounded p-1 shadow-sm">
+              <button type="button" class="toolbar-btn" id="btnSpacing" title="Margin/Padding"><i class="fas fa-border-style"></i></button>
+              <button type="button" class="toolbar-btn" data-command="removeFormat" title="Clear Formatting"><i class="fas fa-eraser"></i></button>
+              <button type="button" class="toolbar-btn" id="btnToggleHtml" title="View Source"><i class="fas fa-code"></i></button>
+            </div>
+
+          </div>
+
+          <!-- Contenteditable area -->
+          <div id="editorContent" class="editor-content flex-1 p-6 outline-none overflow-y-auto prose max-w-none text-gray-800" contenteditable="true">
+            <p><br></p>
+          </div>
+          
+          <textarea id="editorSource" class="hidden flex-1 p-6 font-mono text-sm bg-gray-900 text-green-400 outline-none resize-none w-full h-full"></textarea>
+
+        </div>
+      </form>
+    </main>
+    
+    <!-- Bottom Action Bar -->
+    <div class="fixed bottom-0 right-0 left-80 bg-white border-t border-gray-200 p-4 px-6 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)] z-20 flex justify-between items-center">
+      <div class="flex items-center gap-3">
+        <label class="relative inline-flex items-center cursor-pointer">
+          <input type="checkbox" id="blogStatus" class="sr-only peer" checked>
+          <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-sps-green-mid"></div>
+          <span class="ml-3 text-sm font-medium text-gray-700" id="statusLabel">Published</span>
+        </label>
+        <span id="lastSavedText" class="text-xs text-gray-400 ml-4 hidden">Last saved: Just now</span>
+      </div>
+      <div class="flex gap-3">
+        <button type="button" id="btnPreview" class="px-4 py-2 border border-gray-300 rounded text-gray-700 hover:bg-gray-50 text-sm font-medium transition">Preview</button>
+        <button type="button" id="btnSaveDraft" class="px-4 py-2 border border-gray-300 rounded text-gray-700 hover:bg-gray-50 text-sm font-medium transition">Save Draft</button>
+        <button type="button" id="btnSave" class="px-6 py-2 bg-gradient-to-r from-sps-red to-sps-red-mid text-white rounded shadow text-sm font-bold hover:shadow-md transition">Publish Blog</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Image Resize Overlay & Toolbar -->
+  <div id="imageOverlay" class="hidden absolute pointer-events-none z-30">
+    <div class="absolute -top-10 left-1/2 -translate-x-1/2 bg-white rounded shadow border border-gray-200 flex p-1 pointer-events-auto gap-1">
+      <button class="img-align-btn p-1.5 hover:bg-gray-100 rounded text-gray-600" data-align="left" title="Float Left"><i class="fas fa-align-left"></i></button>
+      <button class="img-align-btn p-1.5 hover:bg-gray-100 rounded text-gray-600" data-align="center" title="Center"><i class="fas fa-align-center"></i></button>
+      <button class="img-align-btn p-1.5 hover:bg-gray-100 rounded text-gray-600" data-align="right" title="Float Right"><i class="fas fa-align-right"></i></button>
+      <div class="w-px bg-gray-300 mx-1"></div>
+      <button class="img-align-btn p-1.5 hover:bg-gray-100 rounded text-gray-600" data-align="100%" title="100% Width"><i class="fas fa-expand"></i></button>
+    </div>
+    <!-- Resize Handles -->
+    <div class="resize-handle nw" data-dir="nw"></div>
+    <div class="resize-handle n" data-dir="n"></div>
+    <div class="resize-handle ne" data-dir="ne"></div>
+    <div class="resize-handle e" data-dir="e"></div>
+    <div class="resize-handle se" data-dir="se"></div>
+    <div class="resize-handle s" data-dir="s"></div>
+    <div class="resize-handle sw" data-dir="sw"></div>
+    <div class="resize-handle w" data-dir="w"></div>
+  </div>
+
+  <!-- Spacing Popup -->
+  <div id="spacingPopup" class="hidden absolute bg-white p-4 rounded shadow-lg border border-gray-200 z-40 w-64 text-sm">
+    <div class="mb-3">
+      <h4 class="font-bold text-gray-700 mb-2">Padding</h4>
+      <div class="grid grid-cols-2 gap-2">
+        <div class="flex items-center"><label class="w-8 text-gray-500">Top</label><input type="text" id="pt" class="w-full border rounded px-2 py-1 text-xs" placeholder="e.g. 10px"></div>
+        <div class="flex items-center"><label class="w-8 text-gray-500">Bot</label><input type="text" id="pb" class="w-full border rounded px-2 py-1 text-xs"></div>
+        <div class="flex items-center"><label class="w-8 text-gray-500">Left</label><input type="text" id="pl" class="w-full border rounded px-2 py-1 text-xs"></div>
+        <div class="flex items-center"><label class="w-8 text-gray-500">Right</label><input type="text" id="pr" class="w-full border rounded px-2 py-1 text-xs"></div>
+      </div>
+    </div>
+    <div class="mb-3">
+      <h4 class="font-bold text-gray-700 mb-2">Margin</h4>
+      <div class="grid grid-cols-2 gap-2">
+        <div class="flex items-center"><label class="w-8 text-gray-500">Top</label><input type="text" id="mt" class="w-full border rounded px-2 py-1 text-xs"></div>
+        <div class="flex items-center"><label class="w-8 text-gray-500">Bot</label><input type="text" id="mb" class="w-full border rounded px-2 py-1 text-xs"></div>
+        <div class="flex items-center"><label class="w-8 text-gray-500">Left</label><input type="text" id="ml" class="w-full border rounded px-2 py-1 text-xs"></div>
+        <div class="flex items-center"><label class="w-8 text-gray-500">Right</label><input type="text" id="mr" class="w-full border rounded px-2 py-1 text-xs"></div>
+      </div>
+    </div>
+    <div class="flex justify-end gap-2 mt-2">
+      <button type="button" id="btnCancelSpacing" class="px-3 py-1 text-gray-600 hover:bg-gray-100 rounded">Cancel</button>
+      <button type="button" id="btnApplySpacing" class="px-3 py-1 bg-sps-blue-mid text-white rounded hover:bg-blue-700">Apply</button>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="fixed top-5 right-5 transform translate-x-full transition-transform duration-300 bg-gray-800 text-white px-4 py-3 rounded shadow-lg z-50 flex items-center gap-3">
+    <i class="fas fa-info-circle text-blue-400" id="toastIcon"></i>
+    <span id="toastMessage">Notification message</span>
+  </div>
+
+  <script src="../assets/js/blog-admin.js"></script>
+</body>
+</html>

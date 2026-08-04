@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Santosh Public School — English Medium | CBSE Pattern | Greater Noida West</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="./assets/css/style.css">
+<link rel="stylesheet" href="./assets/css/blog.css">
+</head>
+
+<body class="bg-gray-50">
+
+<!-- ========== STICKY WHATSAPP BUTTON ========== -->
+<div class="sps-whatsapp-btn">
+  <a href="https://wa.me/919911826993?text=Hello%2C%20I%20would%20like%20to%20know%20more%20about%20admissions%20at%20Santosh%20Public%20School." target="_blank" rel="noopener" title="Chat with us on WhatsApp" aria-label="Chat on WhatsApp">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12.004 2C6.486 2 2 6.486 2 12.004c0 1.925.55 3.802 1.593 5.416L2 22l4.71-1.552a10 10 0 0 0 5.294 1.514h.004c5.518 0 10.002-4.486 10.002-10.004C22.01 6.486 17.524 2 12.005 2Zm.001 18.324h-.003a8.31 8.31 0 0 1-4.242-1.162l-.305-.181-3.152 1.04 1.055-3.07-.198-.315a8.31 8.31 0 0 1-1.276-4.432c0-4.596 3.74-8.336 8.337-8.336 2.227 0 4.32.868 5.894 2.443a8.28 8.28 0 0 1 2.44 5.897c0 4.596-3.74 8.116-8.55 8.116Z"/></svg>
+  </a>
+</div>
+
+<!-- ========== ANNOUNCEMENT TICKER ========== -->
+<div class="sps-ticker">
+  <div class="sps-ticker-inner">
+    <span>Admissions Open for Session 2026–27 — Nursery to Class 5</span>
+    <span>English Medium | CBSE Pattern | Activity-Based Learning</span>
+    <span>Safe Campus | Qualified Teachers | Transport Available</span>
+    <span>Contact: +91 99118 26993 | Bisrakh Road, Chhapraula, Greater Noida West</span>
+    <span>Admissions Open for Session 2026–27 — Nursery to Class 5</span>
+    <span>English Medium | CBSE Pattern | Activity-Based Learning</span>
+  </div>
+</div>
+
+<!-- ========== MAIN HEADER ========== -->
+<header class="bg-white shadow-md sticky top-0 z-50">
+  <div class="max-w-7xl mx-auto px-4">
+    <div class="flex items-center justify-between h-20">
+
+      <!-- Logo -->
+      <a href="#" onclick="loadPage('home')" class="flex items-center gap-3">
+        <img
+          src="assets/images/school-logo.png"
+          alt="Santosh Public School Logo"
+          class="w-14 h-14 object-contain drop-shadow-md"
+          onerror="this.src='assets/images/logo.png'"
+        >
+        <div>
+          <h2 class="font-black text-lg leading-tight" style="color: var(--sps-red);">
+            Santosh Public School
+          </h2>
+          <p class="text-xs font-semibold" style="color: var(--sps-green);">
+            English Medium · CBSE Pattern
+          </p>
+        </div>
+      </a>
+
+      <!-- Desktop Menu -->
+      <nav class="hidden lg:flex items-center gap-6 font-semibold text-sm text-gray-700">
+        <a href="#" onclick="loadPage('home')"      class="sps-nav-link hover:text-red-700 transition">Home</a>
+        <a href="#" onclick="loadPage('about-us')"  class="sps-nav-link hover:text-red-700 transition">About</a>
+        <a href="#" onclick="loadPage('admission')" class="sps-nav-link hover:text-red-700 transition">Admission</a>
+        <a href="#" onclick="loadPage('blog')"      class="sps-nav-link hover:text-red-700 transition">Blog</a>
+        <a href="#" onclick="loadPage('contact')"   class="sps-nav-link hover:text-red-700 transition">Contact</a>
+        <a href="#" onclick="loadPage('admission')" class="sps-admit-btn ml-2">Apply Now →</a>
+      </nav>
+
+      <!-- Mobile Burger -->
+      <button id="menuBtn" class="lg:hidden flex flex-col gap-1.5 p-2" aria-label="Open menu">
+        <span class="w-6 h-0.5 bg-gray-700 block transition-all"></span>
+        <span class="w-6 h-0.5 bg-gray-700 block transition-all"></span>
+        <span class="w-6 h-0.5 bg-gray-700 block transition-all"></span>
+      </button>
+
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobileMenu" class="hidden lg:hidden bg-white border-t border-gray-100 shadow-lg">
+    <nav class="flex flex-col text-sm font-semibold">
+      <a href="#" onclick="loadPage('home');document.getElementById('mobileMenu').classList.add('hidden')"
+         class="px-6 py-4 border-b border-gray-50 hover:bg-red-50 hover:text-red-700 transition">🏠 Home</a>
+      <a href="#" onclick="loadPage('about-us');document.getElementById('mobileMenu').classList.add('hidden')"
+         class="px-6 py-4 border-b border-gray-50 hover:bg-red-50 hover:text-red-700 transition">🏫 About Us</a>
+      <a href="#" onclick="loadPage('admission');document.getElementById('mobileMenu').classList.add('hidden')"
+         class="px-6 py-4 border-b border-gray-50 hover:bg-red-50 hover:text-red-700 transition">🎓 Admission</a>
+      <a href="#" onclick="loadPage('blog');document.getElementById('mobileMenu').classList.add('hidden')"
+         class="px-6 py-4 border-b border-gray-50 hover:bg-red-50 hover:text-red-700 transition">📰 Blog</a>
+      <a href="#" onclick="loadPage('contact');document.getElementById('mobileMenu').classList.add('hidden')"
+         class="px-6 py-4 border-b border-gray-50 hover:bg-red-50 hover:text-red-700 transition">📞 Contact</a>
+      <div class="p-4">
+        <a href="#" onclick="loadPage('admission');document.getElementById('mobileMenu').classList.add('hidden')"
+           class="sps-admit-btn block text-center py-3 rounded-lg">Apply for Admission →</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<!-- ========== MAIN CONTENT ========== -->
+<main id="content">
+
+<!-- ================= HOME PAGE — Santosh Public School ================= -->
+
+<!-- HERO SECTION -->
+<section style="background: linear-gradient(135deg, #7F1D1D 0%, #B91C1C 40%, #166534 100%); position:relative; overflow:hidden;">
+  <div style="position:absolute;inset:0;opacity:0.07;">
+    <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1800&q=60"
+         style="width:100%;height:100%;object-fit:cover;">
+  </div>
+  <div style="position:absolute;top:-80px;right:-80px;width:320px;height:320px;border-radius:50%;background:rgba(255,255,255,0.05);"></div>
+  <div style="position:absolute;bottom:-60px;left:-60px;width:240px;height:240px;border-radius:50%;background:rgba(255,255,255,0.04);"></div>
+  <div class="max-w-7xl mx-auto px-6 lg:px-8" style="position:relative;">
+    <div class="grid lg:grid-cols-2 gap-12 items-center" style="min-height:88vh; padding: 60px 0;">
+      <div>
+        <div class="sps-hero-badge mb-6">🎓 Admissions Open 2026–27 &nbsp;|&nbsp; CBSE Pattern</div>
+        <h1 style="font-size:clamp(36px,5vw,64px); font-weight:900; color:#fff; line-height:1.15; margin-top:16px;">
+          Where Every Child<br>
+          <span style="color:#FDE68A;">Learns, Grows &amp;</span><br>
+          Shines Bright
+        </h1>
+        <p style="color:rgba(255,255,255,0.88); font-size:17px; line-height:1.8; margin-top:20px; max-width:480px;">
+          Santosh Public School offers quality English Medium education from
+          Nursery to Class 5 — building confidence, curiosity and character
+          in every young learner in Greater Noida West.
+        </p>
+        <div style="display:flex;gap:14px;flex-wrap:wrap;margin-top:32px;">
+          <a href="#" onclick="loadPage('admission')"
+             style="background:#fff;color:#B91C1C;padding:14px 28px;border-radius:10px;font-weight:800;font-size:15px;text-decoration:none;box-shadow:0 6px 24px rgba(0,0,0,0.2);transition:all 0.3s;"
+             onmouseover="this.style.transform='translateY(-2px)'"
+             onmouseout="this.style.transform='translateY(0)'">Apply For Admission →</a>
+          <a href="#" onclick="loadPage('about-us')"
+             style="border:2px solid rgba(255,255,255,0.6);color:#fff;padding:14px 28px;border-radius:10px;font-weight:700;font-size:15px;text-decoration:none;transition:all 0.3s;"
+             onmouseover="this.style.background='rgba(255,255,255,0.15)'"
+             onmouseout="this.style.background='transparent'">Explore School</a>
+        </div>
+        <div class="sps-stat-strip" style="margin-top:40px;background:rgba(0,0,0,0.2);border-radius:14px;">
+          <div class="sps-stat-item"><h3>500+</h3><p>Happy Students</p></div>
+          <div class="sps-stat-item"><h3>25+</h3><p>Expert Teachers</p></div>
+          <div class="sps-stat-item"><h3>15+</h3><p>Years of Trust</p></div>
+        </div>
+      </div>
+      <div style="position:relative; display:flex; justify-content:center;">
+        <div style="position:relative;max-width:480px;width:100%;">
+          <img
+            src="https://images.unsplash.com/photo-1588072432836-e10032774350?auto=format&fit=crop&w=900&q=80"
+            style="border-radius:28px;box-shadow:0 24px 60px rgba(0,0,0,0.35);width:100%;"
+            alt="Students at Santosh Public School"
+          >
+          <div style="position:absolute;bottom:-24px;left:-16px;background:#fff;border-radius:16px;padding:14px 20px;box-shadow:0 8px 32px rgba(0,0,0,0.15);display:flex;align-items:center;gap:12px;">
+            <img src="assets/images/school-logo.png" style="width:44px;height:44px;object-fit:contain;" onerror="this.src='assets/images/logo.png'">
+            <div>
+              <p style="font-weight:900;font-size:13px;color:#1e293b;line-height:1.2;">English Medium</p>
+              <p style="font-size:11px;color:#64748b;">Nursery to Class 5</p>
+            </div>
+          </div>
+          <div style="position:absolute;top:16px;right:-12px;background:linear-gradient(135deg,var(--sps-blue),#1D4ED8);color:#fff;border-radius:10px;padding:10px 16px;text-align:center;box-shadow:0 6px 20px rgba(30,58,138,0.4);">
+            <p style="font-size:11px;font-weight:700;opacity:0.85;">CBSE</p>
+            <p style="font-size:14px;font-weight:900;">Pattern</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <svg style="display:block;margin-bottom:-2px;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 80">
+    <path fill="#f8fafc" d="M0,40L60,45C120,50,240,60,360,58C480,56,600,42,720,38C840,34,960,40,1080,46C1200,52,1320,58,1380,61L1440,64V80H0Z"></path>
+  </svg>
+</section>
+
+<!-- ABOUT SECTION -->
+<section style="background:#f8fafc; padding:80px 0;">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="grid lg:grid-cols-2 gap-16 items-center">
+      <div style="position:relative;">
+        <div style="position:absolute;top:-12px;left:-12px;width:100%;height:100%;border-radius:24px;background:linear-gradient(135deg,var(--sps-red-light),var(--sps-green-light));z-index:0;"></div>
+        <img src="https://images.unsplash.com/photo-1513258496099-48168024aec0?auto=format&fit=crop&w=900&q=80"
+             style="border-radius:20px;box-shadow:0 16px 48px rgba(0,0,0,0.12);width:100%;position:relative;z-index:1;"
+             alt="Students learning at Santosh Public School">
+        <div style="position:absolute;bottom:-20px;right:-16px;z-index:2;background:linear-gradient(135deg,var(--sps-red),#7F1D1D);color:#fff;padding:20px 28px;border-radius:16px;box-shadow:0 8px 28px rgba(185,28,28,0.4);text-align:center;">
+          <p style="font-size:32px;font-weight:900;line-height:1;">15+</p>
+          <p style="font-size:12px;font-weight:700;opacity:0.9;">Years of Excellence</p>
+        </div>
+      </div>
+      <div>
+        <div class="sps-label-green">About Our School</div>
+        <h2 style="font-size:clamp(28px,3.5vw,44px);font-weight:900;color:#1e293b;line-height:1.2;margin-bottom:20px;">
+          An Idea-First School Built<br>for <span style="color:var(--sps-red);">Every Child</span>
+        </h2>
+        <p style="color:#475569;font-size:16px;line-height:1.8;margin-bottom:16px;">
+          Santosh Public School is a dedicated English Medium primary school in Chhapraula, Greater Noida West.
+          We follow CBSE pattern curriculum from Nursery to Class 5 — designed to make every child love learning.
+        </p>
+        <p style="color:#475569;font-size:16px;line-height:1.8;margin-bottom:28px;">
+          Our experienced teachers, modern classrooms and activity-based learning approach build strong foundations
+          for academics, creativity and character in every student.
+        </p>
+        <div class="grid grid-cols-2 gap-4">
+          <div style="display:flex;gap:12px;align-items:flex-start;">
+            <div class="sps-icon-box" style="background:var(--sps-red-light);min-width:48px;height:48px;width:48px;margin:0;">📚</div>
+            <div><p style="font-weight:700;color:#1e293b;font-size:14px;">Smart Learning</p><p style="color:#64748b;font-size:12px;">Activity-based classes</p></div>
+          </div>
+          <div style="display:flex;gap:12px;align-items:flex-start;">
+            <div class="sps-icon-box" style="background:var(--sps-green-light);min-width:48px;height:48px;width:48px;margin:0;">👩‍🏫</div>
+            <div><p style="font-weight:700;color:#1e293b;font-size:14px;">Qualified Teachers</p><p style="color:#64748b;font-size:12px;">Experienced faculty</p></div>
+          </div>
+          <div style="display:flex;gap:12px;align-items:flex-start;">
+            <div class="sps-icon-box" style="background:var(--sps-blue-light);min-width:48px;height:48px;width:48px;margin:0;">🚌</div>
+            <div><p style="font-weight:700;color:#1e293b;font-size:14px;">Safe Transport</p><p style="color:#64748b;font-size:12px;">Student safety first</p></div>
+          </div>
+          <div style="display:flex;gap:12px;align-items:flex-start;">
+            <div class="sps-icon-box" style="background:var(--sps-gold-light);min-width:48px;height:48px;width:48px;margin:0;">🏆</div>
+            <div><p style="font-weight:700;color:#1e293b;font-size:14px;">All-Round Growth</p><p style="color:#64748b;font-size:12px;">Academics + activities</p></div>
+          </div>
+        </div>
+        <a href="#" onclick="loadPage('about-us')"
+           style="display:inline-block;margin-top:32px;background:linear-gradient(135deg,var(--sps-red),#7F1D1D);color:#fff;padding:14px 28px;border-radius:10px;font-weight:700;font-size:14px;text-decoration:none;box-shadow:0 4px 16px rgba(185,28,28,0.3);">
+          Know More About Us →
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY CHOOSE US -->
+<section style="background:#fff; padding:80px 0;">
+  <div class="max-w-7xl mx-auto px-6">
+    <div style="text-align:center;max-width:600px;margin:0 auto 56px;">
+      <div class="sps-label-red">Why Choose Us</div>
+      <h2 style="font-size:clamp(26px,3.5vw,42px);font-weight:900;color:#1e293b;margin-top:8px;">Why Parents Trust Santosh Public School</h2>
+      <p style="color:#64748b;font-size:15px;line-height:1.7;margin-top:12px;">We focus on academic excellence while nurturing creativity, confidence and strong values in every child.</p>
+    </div>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="sps-feature-card"><div class="sps-icon-box" style="background:var(--sps-red-light);">👩‍🏫</div><h3 style="font-size:18px;font-weight:800;color:#1e293b;margin-bottom:10px;">Experienced Teachers</h3><p style="color:#64748b;font-size:14px;line-height:1.7;">Passionate educators dedicated to inspiring every student through engaging and personalized learning.</p></div>
+      <div class="sps-feature-card"><div class="sps-icon-box" style="background:var(--sps-green-light);">🧠</div><h3 style="font-size:18px;font-weight:800;color:#1e293b;margin-bottom:10px;">Smart Learning</h3><p style="color:#64748b;font-size:14px;line-height:1.7;">Activity-based learning methods that encourage curiosity, creativity and critical thinking from an early age.</p></div>
+      <div class="sps-feature-card"><div class="sps-icon-box" style="background:var(--sps-blue-light);">🛡️</div><h3 style="font-size:18px;font-weight:800;color:#1e293b;margin-bottom:10px;">Safe Campus</h3><p style="color:#64748b;font-size:14px;line-height:1.7;">Secure, clean and child-friendly campus ensuring a safe and welcoming environment for every student.</p></div>
+      <div class="sps-feature-card"><div class="sps-icon-box" style="background:var(--sps-gold-light);">⚽</div><h3 style="font-size:18px;font-weight:800;color:#1e293b;margin-bottom:10px;">Sports & Activities</h3><p style="color:#64748b;font-size:14px;line-height:1.7;">Encouraging physical fitness and teamwork through games, sports and extracurricular activities.</p></div>
+      <div class="sps-feature-card"><div class="sps-icon-box" style="background:#F3E8FF;">💡</div><h3 style="font-size:18px;font-weight:800;color:#1e293b;margin-bottom:10px;">Creative Learning</h3><p style="color:#64748b;font-size:14px;line-height:1.7;">Art, music, storytelling and hands-on activities make learning enjoyable and memorable for children.</p></div>
+      <div class="sps-feature-card"><div class="sps-icon-box" style="background:#FCE7F3;">❤️</div><h3 style="font-size:18px;font-weight:800;color:#1e293b;margin-bottom:10px;">Value Education</h3><p style="color:#64748b;font-size:14px;line-height:1.7;">Building character, discipline, honesty and respect through everyday learning experiences and role models.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- LEARNING PROGRAMS -->
+<section style="background:#f8fafc; padding:80px 0;">
+  <div class="max-w-7xl mx-auto px-6">
+    <div style="text-align:center;max-width:600px;margin:0 auto 56px;">
+      <div class="sps-label-blue">Our Programs</div>
+      <h2 style="font-size:clamp(26px,3.5vw,42px);font-weight:900;color:#1e293b;margin-top:8px;">Learning Programs for Every Age</h2>
+      <p style="color:#64748b;font-size:15px;line-height:1.7;margin-top:12px;">Age-appropriate education with fun, creativity, discipline and interactive activities to build a strong academic foundation.</p>
+    </div>
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div class="sps-program-card">
+        <div style="overflow:hidden;height:200px;"><img src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?auto=format&fit=crop&w=800&q=80" style="width:100%;height:200px;object-fit:cover;" alt="Nursery"></div>
+        <div style="padding:20px;"><div style="display:inline-block;background:var(--sps-red-light);color:var(--sps-red);font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;margin-bottom:10px;">Age 3–4</div><h3 style="font-size:20px;font-weight:800;color:#1e293b;margin-bottom:8px;">Nursery</h3><p style="color:#64748b;font-size:13px;line-height:1.7;">Play-based learning for developing communication, creativity and early confidence.</p></div>
+      </div>
+      <div class="sps-program-card">
+        <div style="overflow:hidden;height:200px;"><img src="https://images.unsplash.com/photo-1516627145497-ae6968895b74?auto=format&fit=crop&w=800&q=80" style="width:100%;height:200px;object-fit:cover;" alt="LKG"></div>
+        <div style="padding:20px;"><div style="display:inline-block;background:var(--sps-green-light);color:var(--sps-green);font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;margin-bottom:10px;">Age 4–5</div><h3 style="font-size:20px;font-weight:800;color:#1e293b;margin-bottom:8px;">LKG</h3><p style="color:#64748b;font-size:13px;line-height:1.7;">Language development, early mathematics and fun classroom activities.</p></div>
+      </div>
+      <div class="sps-program-card">
+        <div style="overflow:hidden;height:200px;"><img src="https://images.unsplash.com/photo-1513258496099-48168024aec0?auto=format&fit=crop&w=800&q=80" style="width:100%;height:200px;object-fit:cover;" alt="UKG"></div>
+        <div style="padding:20px;"><div style="display:inline-block;background:var(--sps-blue-light);color:var(--sps-blue);font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;margin-bottom:10px;">Age 5–6</div><h3 style="font-size:20px;font-weight:800;color:#1e293b;margin-bottom:8px;">UKG</h3><p style="color:#64748b;font-size:13px;line-height:1.7;">Preparing children for primary education through structured, activity-based learning.</p></div>
+      </div>
+      <div class="sps-program-card">
+        <div style="overflow:hidden;height:200px;"><img src="https://images.unsplash.com/photo-1588072432836-e10032774350?auto=format&fit=crop&w=800&q=80" style="width:100%;height:200px;object-fit:cover;" alt="Class 1 to 5"></div>
+        <div style="padding:20px;"><div style="display:inline-block;background:var(--sps-gold-light);color:var(--sps-gold);font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;margin-bottom:10px;">Age 6–11</div><h3 style="font-size:20px;font-weight:800;color:#1e293b;margin-bottom:8px;">Class 1 – 5</h3><p style="color:#64748b;font-size:13px;line-height:1.7;">Strong academic foundation with practical activities, discipline and personality development.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATISTICS -->
+<section style="background: linear-gradient(135deg, var(--sps-red) 0%, #7F1D1D 40%, var(--sps-green) 100%); padding:80px 0; position:relative; overflow:hidden;">
+  <div style="position:absolute;inset:0;background:url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2260%22 height=%2260%22><circle cx=%2230%22 cy=%2230%22 r=%221%22 fill=%22rgba(255,255,255,0.15)%22/></svg>');"></div>
+  <div class="max-w-7xl mx-auto px-6" style="position:relative;">
+    <div style="text-align:center;margin-bottom:56px;">
+      <div class="sps-label-gold">Our Achievements</div>
+      <h2 style="font-size:clamp(26px,3.5vw,42px);font-weight:900;color:#fff;margin-top:8px;">Our Success in Numbers</h2>
+      <p style="color:rgba(255,255,255,0.8);margin-top:10px;">Building bright futures every single day.</p>
+    </div>
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div class="sps-stat-card"><p style="font-size:52px;font-weight:900;color:#FDE68A;line-height:1;">500+</p><p style="color:#fff;font-weight:700;margin-top:8px;font-size:15px;">Happy Students</p><p style="color:rgba(255,255,255,0.65);font-size:12px;margin-top:4px;">Enrolled & thriving</p></div>
+      <div class="sps-stat-card"><p style="font-size:52px;font-weight:900;color:#FDE68A;line-height:1;">25+</p><p style="color:#fff;font-weight:700;margin-top:8px;font-size:15px;">Qualified Teachers</p><p style="color:rgba(255,255,255,0.65);font-size:12px;margin-top:4px;">Dedicated & caring</p></div>
+      <div class="sps-stat-card"><p style="font-size:52px;font-weight:900;color:#FDE68A;line-height:1;">15+</p><p style="color:#fff;font-weight:700;margin-top:8px;font-size:15px;">Years Experience</p><p style="color:rgba(255,255,255,0.65);font-size:12px;margin-top:4px;">Trusted by families</p></div>
+      <div class="sps-stat-card"><p style="font-size:52px;font-weight:900;color:#FDE68A;line-height:1;">100%</p><p style="color:#fff;font-weight:700;margin-top:8px;font-size:15px;">Student Care</p><p style="color:rgba(255,255,255,0.65);font-size:12px;margin-top:4px;">Every child matters</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SCHOOL FACILITIES -->
+<section style="background:#fff; padding:80px 0;">
+  <div class="max-w-7xl mx-auto px-6">
+    <div style="text-align:center;max-width:600px;margin:0 auto 56px;">
+      <div class="sps-label-green">Our Facilities</div>
+      <h2 style="font-size:clamp(26px,3.5vw,42px);font-weight:900;color:#1e293b;margin-top:8px;">Modern Campus Facilities</h2>
+    </div>
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
+      <div style="background:#f8fafc;border-radius:16px;padding:28px;text-align:center;transition:all 0.3s;border:2px solid transparent;" onmouseover="this.style.borderColor='var(--sps-red)';this.style.background='var(--sps-red-light)'" onmouseout="this.style.borderColor='transparent';this.style.background='#f8fafc'"><div style="font-size:48px;margin-bottom:14px;">🖥️</div><h3 style="font-weight:800;color:#1e293b;margin-bottom:6px;">Computer Lab</h3><p style="color:#64748b;font-size:13px;">Basic computer education with modern systems</p></div>
+      <div style="background:#f8fafc;border-radius:16px;padding:28px;text-align:center;transition:all 0.3s;border:2px solid transparent;" onmouseover="this.style.borderColor='var(--sps-green)';this.style.background='var(--sps-green-light)'" onmouseout="this.style.borderColor='transparent';this.style.background='#f8fafc'"><div style="font-size:48px;margin-bottom:14px;">📚</div><h3 style="font-weight:800;color:#1e293b;margin-bottom:6px;">Library</h3><p style="color:#64748b;font-size:13px;">Story books and educational learning resources</p></div>
+      <div style="background:#f8fafc;border-radius:16px;padding:28px;text-align:center;transition:all 0.3s;border:2px solid transparent;" onmouseover="this.style.borderColor='var(--sps-blue)';this.style.background='var(--sps-blue-light)'" onmouseout="this.style.borderColor='transparent';this.style.background='#f8fafc'"><div style="font-size:48px;margin-bottom:14px;">⚽</div><h3 style="font-weight:800;color:#1e293b;margin-bottom:6px;">Sports Ground</h3><p style="color:#64748b;font-size:13px;">Indoor and outdoor sports activities</p></div>
+      <div style="background:#f8fafc;border-radius:16px;padding:28px;text-align:center;transition:all 0.3s;border:2px solid transparent;" onmouseover="this.style.borderColor='var(--sps-gold)';this.style.background='var(--sps-gold-light)'" onmouseout="this.style.borderColor='transparent';this.style.background='#f8fafc'"><div style="font-size:48px;margin-bottom:14px;">🚌</div><h3 style="font-weight:800;color:#1e293b;margin-bottom:6px;">Safe Transport</h3><p style="color:#64748b;font-size:13px;">Reliable transportation for students</p></div>
+      <div style="background:#f8fafc;border-radius:16px;padding:28px;text-align:center;transition:all 0.3s;border:2px solid transparent;" onmouseover="this.style.borderColor='var(--sps-red)';this.style.background='var(--sps-red-light)'" onmouseout="this.style.borderColor='transparent';this.style.background='#f8fafc'"><div style="font-size:48px;margin-bottom:14px;">🎨</div><h3 style="font-weight:800;color:#1e293b;margin-bottom:6px;">Activity Room</h3><p style="color:#64748b;font-size:13px;">Creative learning through arts and crafts</p></div>
+      <div style="background:#f8fafc;border-radius:16px;padding:28px;text-align:center;transition:all 0.3s;border:2px solid transparent;" onmouseover="this.style.borderColor='var(--sps-green)';this.style.background='var(--sps-green-light)'" onmouseout="this.style.borderColor='transparent';this.style.background='#f8fafc'"><div style="font-size:48px;margin-bottom:14px;">🏫</div><h3 style="font-weight:800;color:#1e293b;margin-bottom:6px;">Smart Classroom</h3><p style="color:#64748b;font-size:13px;">Interactive digital teaching environment</p></div>
+      <div style="background:#f8fafc;border-radius:16px;padding:28px;text-align:center;transition:all 0.3s;border:2px solid transparent;" onmouseover="this.style.borderColor='var(--sps-blue)';this.style.background='var(--sps-blue-light)'" onmouseout="this.style.borderColor='transparent';this.style.background='#f8fafc'"><div style="font-size:48px;margin-bottom:14px;">❤️</div><h3 style="font-weight:800;color:#1e293b;margin-bottom:6px;">Medical Care</h3><p style="color:#64748b;font-size:13px;">First aid support for every student</p></div>
+      <div style="background:#f8fafc;border-radius:16px;padding:28px;text-align:center;transition:all 0.3s;border:2px solid transparent;" onmouseover="this.style.borderColor='var(--sps-gold)';this.style.background='var(--sps-gold-light)'" onmouseout="this.style.borderColor='transparent';this.style.background='#f8fafc'"><div style="font-size:48px;margin-bottom:14px;">🌳</div><h3 style="font-weight:800;color:#1e293b;margin-bottom:6px;">Green Campus</h3><p style="color:#64748b;font-size:13px;">Safe, clean and eco-friendly environment</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- TEACHING METHOD -->
+<section style="background:#f8fafc; padding:80px 0;">
+  <div class="max-w-7xl mx-auto px-6">
+    <div style="text-align:center;max-width:600px;margin:0 auto 56px;">
+      <div class="sps-label-blue">How We Teach</div>
+      <h2 style="font-size:clamp(26px,3.5vw,42px);font-weight:900;color:#1e293b;margin-top:8px;">Our Teaching Process</h2>
+    </div>
+    <div class="grid lg:grid-cols-4 gap-6">
+      <div class="sps-process-step"><div class="sps-process-circle" style="background:var(--sps-red-light);">📖</div><div style="display:inline-block;background:var(--sps-red);color:#fff;font-size:11px;font-weight:700;padding:3px 12px;border-radius:20px;margin-bottom:10px;">Step 01</div><h3 style="font-size:18px;font-weight:800;color:#1e293b;margin-bottom:8px;">Learn</h3><p style="color:#64748b;font-size:13px;line-height:1.7;">Understanding concepts through interactive and visual teaching methods.</p></div>
+      <div class="sps-process-step"><div class="sps-process-circle" style="background:var(--sps-green-light);">✍️</div><div style="display:inline-block;background:var(--sps-green);color:#fff;font-size:11px;font-weight:700;padding:3px 12px;border-radius:20px;margin-bottom:10px;">Step 02</div><h3 style="font-size:18px;font-weight:800;color:#1e293b;margin-bottom:8px;">Practice</h3><p style="color:#64748b;font-size:13px;line-height:1.7;">Worksheets, activities and classroom exercises to reinforce learning.</p></div>
+      <div class="sps-process-step"><div class="sps-process-circle" style="background:var(--sps-blue-light);">🎲</div><div style="display:inline-block;background:var(--sps-blue);color:#fff;font-size:11px;font-weight:700;padding:3px 12px;border-radius:20px;margin-bottom:10px;">Step 03</div><h3 style="font-size:18px;font-weight:800;color:#1e293b;margin-bottom:8px;">Play</h3><p style="color:#64748b;font-size:13px;line-height:1.7;">Fun learning through games, art and creative group activities.</p></div>
+      <div class="sps-process-step"><div class="sps-process-circle" style="background:var(--sps-gold-light);">🚀</div><div style="display:inline-block;background:var(--sps-gold);color:#fff;font-size:11px;font-weight:700;padding:3px 12px;border-radius:20px;margin-bottom:10px;">Step 04</div><h3 style="font-size:18px;font-weight:800;color:#1e293b;margin-bottom:8px;">Grow</h3><p style="color:#64748b;font-size:13px;line-height:1.7;">Building confidence, leadership, values and a love for lifelong learning.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PRINCIPAL'S MESSAGE -->
+<section style="background:#fff; padding:80px 0;">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="grid lg:grid-cols-2 gap-16 items-center">
+      <div style="position:relative;">
+        <img src="https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=900&q=80"
+             style="border-radius:24px;box-shadow:0 16px 48px rgba(0,0,0,0.12);width:100%;" alt="Principal of Santosh Public School">
+        <div style="position:absolute;bottom:-16px;right:-12px;background:linear-gradient(135deg,var(--sps-green),var(--sps-green-mid));color:#fff;padding:16px 24px;border-radius:14px;box-shadow:0 8px 24px rgba(22,101,52,0.4);">
+          <p style="font-size:13px;font-weight:700;">🏫 Santosh Public School</p>
+          <p style="font-size:11px;opacity:0.85;margin-top:2px;">Est. 2010 · Greater Noida West</p>
+        </div>
+      </div>
+      <div>
+        <div class="sps-label-green">Principal's Message</div>
+        <h2 style="font-size:clamp(24px,3vw,38px);font-weight:900;color:#1e293b;margin-bottom:20px;">A Word From Our Principal</h2>
+        <div style="border-left:4px solid var(--sps-red);padding-left:20px;margin-bottom:20px;">
+          <p style="color:#475569;font-size:15px;line-height:1.9;font-style:italic;">
+            "Dear Parents, every child who walks through our doors brings unique potential.
+            Our mission is to provide quality education in a caring, nurturing environment —
+            where students learn discipline, honesty, leadership and confidence alongside academics."
+          </p>
+        </div>
+        <p style="color:#475569;font-size:15px;line-height:1.9;margin-bottom:28px;">
+          Together with parents, teachers and students, we strive to build responsible citizens
+          who contribute positively to society and make every family proud.
+        </p>
+        <div style="display:flex;align-items:center;gap:16px;">
+          <div style="width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,var(--sps-red),var(--sps-green));display:flex;align-items:center;justify-content:center;font-size:24px;color:#fff;font-weight:900;">P</div>
+          <div>
+            <p style="font-weight:800;color:#1e293b;font-size:16px;">The Principal</p>
+            <p style="color:#64748b;font-size:13px;">Santosh Public School, Greater Noida West</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PHOTO GALLERY -->
+<section style="background:#f8fafc; padding:80px 0;">
+  <div class="max-w-7xl mx-auto px-6">
+    <div style="text-align:center;max-width:600px;margin:0 auto 56px;">
+      <div class="sps-label-red">Our Gallery</div>
+      <h2 style="font-size:clamp(26px,3.5vw,42px);font-weight:900;color:#1e293b;margin-top:8px;">School Moments & Memories</h2>
+    </div>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+      <div class="sps-gallery-img" style="height:240px;"><img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=900&q=80" alt="School activity"><div class="overlay"></div></div>
+      <div class="sps-gallery-img" style="height:240px;"><img src="https://images.unsplash.com/photo-1513258496099-48168024aec0?auto=format&fit=crop&w=900&q=80" alt="Students learning"><div class="overlay"></div></div>
+      <div class="sps-gallery-img" style="height:240px;"><img src="https://images.unsplash.com/photo-1588072432836-e10032774350?auto=format&fit=crop&w=900&q=80" alt="Class activity"><div class="overlay"></div></div>
+      <div class="sps-gallery-img" style="height:240px;"><img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=900&q=80" alt="Sports day"><div class="overlay"></div></div>
+      <div class="sps-gallery-img" style="height:240px;"><img src="https://images.unsplash.com/photo-1497486751825-1233686d5d80?auto=format&fit=crop&w=900&q=80" alt="Art class"><div class="overlay"></div></div>
+      <div class="sps-gallery-img" style="height:240px;"><img src="https://images.unsplash.com/photo-1516627145497-ae6968895b74?auto=format&fit=crop&w=900&q=80" alt="Annual function"><div class="overlay"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section style="background:#fff; padding:80px 0;">
+  <div class="max-w-7xl mx-auto px-6">
+    <div style="text-align:center;max-width:600px;margin:0 auto 56px;">
+      <div class="sps-label-gold">Parent Reviews</div>
+      <h2 style="font-size:clamp(26px,3.5vw,42px);font-weight:900;color:#1e293b;margin-top:8px;">What Parents Say About Us</h2>
+      <p style="color:#64748b;margin-top:10px;">Trusted and loved by hundreds of happy families.</p>
+    </div>
+    <div class="grid lg:grid-cols-3 gap-6">
+      <div class="sps-testi-card">
+        <div style="color:#FBBF24;font-size:18px;margin-bottom:16px;">★★★★★</div>
+        <p style="color:#475569;font-size:14px;line-height:1.8;margin-bottom:24px;">"Santosh Public School provides excellent education and a genuinely caring environment. My child enjoys learning every single day and has grown so much in confidence."</p>
+        <div style="display:flex;align-items:center;gap:14px;">
+          <img src="https://randomuser.me/api/portraits/women/12.jpg" style="width:48px;height:48px;border-radius:50%;object-fit:cover;">
+          <div><p style="font-weight:800;color:#1e293b;font-size:14px;">Priya Sharma</p><p style="color:#64748b;font-size:12px;">Parent — Nursery</p></div>
+        </div>
+      </div>
+      <div class="sps-testi-card">
+        <div style="color:#FBBF24;font-size:18px;margin-bottom:16px;">★★★★★</div>
+        <p style="color:#475569;font-size:14px;line-height:1.8;margin-bottom:24px;">"The teachers are so supportive and the school focuses on both academics and personality development. We are very happy with our child's overall progress this year."</p>
+        <div style="display:flex;align-items:center;gap:14px;">
+          <img src="https://randomuser.me/api/portraits/men/31.jpg" style="width:48px;height:48px;border-radius:50%;object-fit:cover;">
+          <div><p style="font-weight:800;color:#1e293b;font-size:14px;">Amit Verma</p><p style="color:#64748b;font-size:12px;">Parent — Class 2</p></div>
+        </div>
+      </div>
+      <div class="sps-testi-card">
+        <div style="color:#FBBF24;font-size:18px;margin-bottom:16px;">★★★★★</div>
+        <p style="color:#475569;font-size:14px;line-height:1.8;margin-bottom:24px;">"Safe campus, qualified teachers and an excellent learning environment for children. The school truly feels like a second home for my daughter."</p>
+        <div style="display:flex;align-items:center;gap:14px;">
+          <img src="https://randomuser.me/api/portraits/women/45.jpg" style="width:48px;height:48px;border-radius:50%;object-fit:cover;">
+          <div><p style="font-weight:800;color:#1e293b;font-size:14px;">Neha Singh</p><p style="color:#64748b;font-size:12px;">Parent — Class 4</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEWS & EVENTS -->
+<section style="background:#f8fafc; padding:80px 0;">
+  <div class="max-w-7xl mx-auto px-6">
+    <div style="text-align:center;max-width:600px;margin:0 auto 56px;">
+      <div class="sps-label-red">News & Events</div>
+      <h2 style="font-size:clamp(26px,3.5vw,42px);font-weight:900;color:#1e293b;margin-top:8px;">Latest School Updates</h2>
+    </div>
+    <div class="grid lg:grid-cols-3 gap-6">
+      <div style="background:#fff;border-radius:20px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,0.07);transition:all 0.3s;" onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 12px 36px rgba(0,0,0,0.12)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 4px 20px rgba(0,0,0,0.07)'">
+        <div style="overflow:hidden;height:200px;"><img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=900&q=80" style="width:100%;height:200px;object-fit:cover;transition:transform 0.4s;" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'" alt="Admission open"></div>
+        <div style="padding:24px;"><span style="color:var(--sps-red);font-weight:700;font-size:12px;">📅 15 July 2026</span><h3 style="font-size:17px;font-weight:800;color:#1e293b;margin:10px 0 8px;">Admission Open For Session 2026–27</h3><p style="color:#64748b;font-size:13px;line-height:1.6;margin-bottom:16px;">Enrol your child now for Nursery to Class 5. Limited seats available.</p><a href="#" onclick="loadPage('admission')" style="color:var(--sps-red);font-weight:700;font-size:13px;text-decoration:none;">Apply Now →</a></div>
+      </div>
+      <div style="background:#fff;border-radius:20px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,0.07);transition:all 0.3s;" onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 12px 36px rgba(0,0,0,0.12)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 4px 20px rgba(0,0,0,0.07)'">
+        <div style="overflow:hidden;height:200px;"><img src="https://images.unsplash.com/photo-1516627145497-ae6968895b74?auto=format&fit=crop&w=900&q=80" style="width:100%;height:200px;object-fit:cover;transition:transform 0.4s;" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'" alt="Independence Day"></div>
+        <div style="padding:24px;"><span style="color:var(--sps-green);font-weight:700;font-size:12px;">📅 15 August 2026</span><h3 style="font-size:17px;font-weight:800;color:#1e293b;margin:10px 0 8px;">Independence Day Celebration</h3><p style="color:#64748b;font-size:13px;line-height:1.6;margin-bottom:16px;">Students participate in flag hoisting, cultural programs and patriotic activities.</p><a href="#" style="color:var(--sps-green);font-weight:700;font-size:13px;text-decoration:none;">Read More →</a></div>
+      </div>
+      <div style="background:#fff;border-radius:20px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,0.07);transition:all 0.3s;" onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 12px 36px rgba(0,0,0,0.12)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 4px 20px rgba(0,0,0,0.07)'">
+        <div style="overflow:hidden;height:200px;"><img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=900&q=80" style="width:100%;height:200px;object-fit:cover;transition:transform 0.4s;" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'" alt="PTM"></div>
+        <div style="padding:24px;"><span style="color:var(--sps-blue);font-weight:700;font-size:12px;">📅 1 August 2026</span><h3 style="font-size:17px;font-weight:800;color:#1e293b;margin:10px 0 8px;">Parent Teacher Meeting</h3><p style="color:#64748b;font-size:13px;line-height:1.6;margin-bottom:16px;">Monthly PTM to discuss student progress, feedback and upcoming activities.</p><a href="#" style="color:var(--sps-blue);font-weight:700;font-size:13px;text-decoration:none;">Read More →</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section style="background:#fff; padding:80px 0;">
+  <div style="max-width:760px;margin:0 auto;padding:0 24px;">
+    <div style="text-align:center;margin-bottom:48px;">
+      <div class="sps-label-blue">FAQ</div>
+      <h2 style="font-size:clamp(24px,3.5vw,38px);font-weight:900;color:#1e293b;margin-top:8px;">Frequently Asked Questions</h2>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:12px;">
+      <details class="sps-faq"><summary>What classes are available at Santosh Public School?</summary><p>We offer classes from Nursery, LKG and UKG through to Class 1 to Class 5 — covering the full primary school curriculum in English medium.</p></details>
+      <details class="sps-faq"><summary>Is transport / bus service available?</summary><p>Yes, transport facility is available for students. Please contact the school office for route details and bus timings in your area.</p></details>
+      <details class="sps-faq"><summary>What is the medium of instruction?</summary><p>The medium of instruction is English. We follow a CBSE pattern curriculum designed to give students a strong national-standard academic foundation.</p></details>
+      <details class="sps-faq"><summary>How can I apply for admission?</summary><p>You can visit the school office directly, call us at +91 99118 26993, or fill out the admission enquiry form on our Admission page.</p></details>
+      <details class="sps-faq"><summary>What is the school timing?</summary><p>School operates Monday to Saturday from 8:00 AM to 1:30 PM. Sunday is a holiday.</p></details>
+      <details class="sps-faq"><summary>Are co-curricular activities part of the curriculum?</summary><p>Yes. We include sports, art, music, drawing competitions, annual functions and more as an integral part of every student's school experience.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- ADMISSION CTA BANNER -->
+<section style="background: linear-gradient(135deg, var(--sps-blue) 0%, #1E3A8A 50%, var(--sps-green) 100%); padding:80px 24px; text-align:center; position:relative; overflow:hidden;">
+  <div style="position:absolute;top:-60px;right:-60px;width:250px;height:250px;border-radius:50%;background:rgba(255,255,255,0.05);"></div>
+  <div style="position:absolute;bottom:-40px;left:-40px;width:180px;height:180px;border-radius:50%;background:rgba(255,255,255,0.06);"></div>
+  <div style="position:relative;max-width:700px;margin:0 auto;">
+    <div style="display:inline-block;background:rgba(255,255,255,0.15);color:#fff;font-size:12px;font-weight:700;letter-spacing:1.5px;padding:6px 18px;border-radius:30px;margin-bottom:20px;">🎓 ADMISSIONS OPEN 2026–27</div>
+    <h2 style="font-size:clamp(28px,4vw,48px);font-weight:900;color:#fff;line-height:1.2;margin-bottom:16px;">Give Your Child the Best<br>Start to a Bright Future</h2>
+    <p style="color:rgba(255,255,255,0.85);font-size:16px;line-height:1.7;margin-bottom:36px;">Limited seats available for Session 2026–27. Nursery to Class 5.</p>
+    <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
+      <a href="#" onclick="loadPage('admission')" style="background:#fff;color:var(--sps-red);padding:16px 36px;border-radius:12px;font-weight:800;font-size:15px;text-decoration:none;box-shadow:0 6px 24px rgba(0,0,0,0.2);transition:all 0.3s;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">Apply Now →</a>
+      <a href="#" onclick="loadPage('contact')" style="border:2px solid rgba(255,255,255,0.6);color:#fff;padding:16px 36px;border-radius:12px;font-weight:700;font-size:15px;text-decoration:none;transition:all 0.3s;" onmouseover="this.style.background='rgba(255,255,255,0.15)'" onmouseout="this.style.background='transparent'">Contact School</a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT SECTION -->
+<section style="background:#f8fafc; padding:60px 0;">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+
+    <div style="text-align:center;margin-bottom:36px;">
+      <div class="sps-label-green">Get In Touch</div>
+      <h2 style="font-size:clamp(20px,4vw,34px);font-weight:900;color:#1e293b;margin-top:10px;line-height:1.25;padding:0 8px;">
+        Contact Santosh Public School
+      </h2>
+      <p style="color:#64748b;font-size:14px;line-height:1.7;margin-top:10px;max-width:480px;margin-left:auto;margin-right:auto;padding:0 8px;">
+        We welcome parents to visit our campus. Happy to answer your questions about admissions and school life.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+
+      <div style="background:#fff;border-radius:18px;padding:20px 14px;box-shadow:0 4px 16px rgba(0,0,0,0.07);display:flex;flex-direction:column;align-items:center;text-align:center;gap:10px;">
+        <div style="width:48px;height:48px;border-radius:12px;background:var(--sps-red-light);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;">📍</div>
+        <div>
+          <p style="font-weight:700;color:#1e293b;font-size:13px;margin-bottom:4px;">Our Address</p>
+          <p style="color:#64748b;font-size:12px;line-height:1.6;">Bisrakh Road, Chhapraula,<br>Greater Noida West</p>
+        </div>
+      </div>
+
+      <div style="background:#fff;border-radius:18px;padding:20px 14px;box-shadow:0 4px 16px rgba(0,0,0,0.07);display:flex;flex-direction:column;align-items:center;text-align:center;gap:10px;">
+        <div style="width:48px;height:48px;border-radius:12px;background:var(--sps-green-light);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;">📞</div>
+        <div>
+          <p style="font-weight:700;color:#1e293b;font-size:13px;margin-bottom:4px;">Phone</p>
+          <a href="tel:+919911826993" style="color:#64748b;font-size:12px;text-decoration:none;">+91 99118 26993</a>
+        </div>
+      </div>
+
+      <div style="background:#fff;border-radius:18px;padding:20px 14px;box-shadow:0 4px 16px rgba(0,0,0,0.07);display:flex;flex-direction:column;align-items:center;text-align:center;gap:10px;">
+        <div style="width:48px;height:48px;border-radius:12px;background:var(--sps-blue-light);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;">✉️</div>
+        <div>
+          <p style="font-weight:700;color:#1e293b;font-size:13px;margin-bottom:4px;">Email</p>
+          <a href="mailto:admission@santoshpublicschool.com" style="color:#64748b;font-size:11px;text-decoration:none;word-break:break-all;">admission@santoshpublicschool.com</a>
+        </div>
+      </div>
+
+      <div style="background:#fff;border-radius:18px;padding:20px 14px;box-shadow:0 4px 16px rgba(0,0,0,0.07);display:flex;flex-direction:column;align-items:center;text-align:center;gap:10px;">
+        <div style="width:48px;height:48px;border-radius:12px;background:var(--sps-gold-light);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;">🕗</div>
+        <div>
+          <p style="font-weight:700;color:#1e293b;font-size:13px;margin-bottom:4px;">School Hours</p>
+          <p style="color:#64748b;font-size:12px;line-height:1.6;">Mon – Sat<br>8:00 AM – 1:30 PM</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div style="text-align:center;margin-top:28px;">
+      <a href="#" onclick="loadPage('contact')"
+         style="display:inline-block;background:linear-gradient(135deg,var(--sps-red),#7F1D1D);color:#fff;padding:13px 28px;border-radius:11px;font-weight:700;font-size:14px;text-decoration:none;box-shadow:0 4px 14px rgba(185,28,28,0.25);">
+        Contact Us →
+      </a>
+    </div>
+
+  </div>
+</section>
+
+</main>
+
+<!-- ========== FOOTER ========== -->
+<footer class="sps-footer text-gray-300 mt-10">
+  <div style="background: linear-gradient(90deg, var(--sps-red) 0%, var(--sps-green) 50%, var(--sps-blue) 100%); height: 4px;"></div>
+  <div class="max-w-7xl mx-auto px-6 py-14 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+    <div class="lg:col-span-2">
+      <div class="flex items-center gap-4 mb-5">
+        <img src="assets/images/school-logo.png" alt="Santosh Public School Logo" class="w-14 h-14 object-contain" onerror="this.src='assets/images/logo.png'">
+        <div>
+          <h2 class="font-black text-lg text-white leading-tight">Santosh Public School</h2>
+          <p class="text-xs font-semibold" style="color: var(--sps-gold);">English Medium · CBSE Pattern</p>
+        </div>
+      </div>
+      <p class="text-sm leading-relaxed text-gray-400 max-w-sm mb-6">A trusted English Medium primary school in Chhapraula, Greater Noida West — committed to quality education, holistic development and nurturing every child's unique potential.</p>
+      <ul class="space-y-2 text-sm text-gray-400">
+        <li class="flex items-start gap-2"><span>📍</span><span>Bisrakh Road, Chhapraula, Greater Noida West, U.P.</span></li>
+        <li class="flex items-center gap-2"><span>📞</span><a href="tel:+919911826993" class="hover:text-yellow-400 transition">+91 99118 26993</a></li>
+        <li class="flex items-center gap-2"><span>✉️</span><a href="mailto:admission@santoshpublicschool.com" class="hover:text-yellow-400 transition">admission@santoshpublicschool.com</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3 class="font-bold text-white mb-5 text-base">Quick Links</h3>
+      <nav>
+        <a href="#" onclick="loadPage('home')"      class="sps-footer-link">🏠 Home</a>
+        <a href="#" onclick="loadPage('about-us')"  class="sps-footer-link">🏫 About Us</a>
+        <a href="#" onclick="loadPage('admission')" class="sps-footer-link">🎓 Admission</a>
+        <a href="#" onclick="loadPage('blog')"      class="sps-footer-link">📰 Blog</a>
+        <a href="#" onclick="loadPage('contact')"   class="sps-footer-link">📞 Contact Us</a>
+      </nav>
+    </div>
+    <div>
+      <h3 class="font-bold text-white mb-5 text-base">Our Programs</h3>
+      <ul class="space-y-2 text-sm text-gray-400">
+        <li class="flex items-center gap-2"><span style="color:var(--sps-gold);">●</span> Nursery</li>
+        <li class="flex items-center gap-2"><span style="color:var(--sps-gold);">●</span> Lower Kindergarten (LKG)</li>
+        <li class="flex items-center gap-2"><span style="color:var(--sps-gold);">●</span> Upper Kindergarten (UKG)</li>
+        <li class="flex items-center gap-2"><span style="color:var(--sps-gold);">●</span> Class 1 to Class 5</li>
+      </ul>
+      <div class="mt-6">
+        <h4 class="font-bold text-white mb-3 text-sm">School Timings</h4>
+        <p class="text-sm text-gray-400">Mon – Sat: 8:00 AM – 1:30 PM</p>
+        <p class="text-sm text-gray-400">Sunday: Holiday</p>
+      </div>
+    </div>
+  </div>
+  <div class="border-t border-gray-800">
+    <div class="max-w-7xl mx-auto px-6 py-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-gray-500">
+      <p>© <span id="currentYear">2026</span> Santosh Public School. All rights reserved.</p>
+      <p style="color: var(--sps-gold);">Shaping Tomorrow's Leaders, Today.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ========== SCRIPTS (no fetch, no modules — works on file://) ========== -->
+<script>
+  /* Mobile menu toggle */
+  document.getElementById('menuBtn').addEventListener('click', function () {
+    document.getElementById('mobileMenu').classList.toggle('hidden');
+  });
+
+  /* Current year in footer */
+  document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+  /* ---- SPA Router (fetch-based, works when uploaded to server) ---- */
+  async function loadPage(page) {
+    /* When opened via file://, fetch won't work for other pages.
+       On the server (after FileZilla upload) it works perfectly.
+       Home page is always pre-loaded in this file. */
+    if (page === 'home') {
+      location.reload();
+      return;
+    }
+
+    var content = document.getElementById('content');
+    if (!content) return;
+
+    try {
+      var response = await fetch('pages/' + page + '.html');
+      if (!response.ok) throw new Error('Page not found');
+      var html = await response.text();
+      content.innerHTML = html;
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      var mobileMenu = document.getElementById('mobileMenu');
+      if (mobileMenu) mobileMenu.classList.add('hidden');
+    } catch (err) {
+      /* Friendly message when running locally via file:// */
+      content.innerHTML = `
+        <div style="text-align:center;padding:80px 24px;">
+          <div style="font-size:60px;margin-bottom:20px;">🏫</div>
+          <h2 style="font-size:28px;font-weight:900;color:#1e293b;margin-bottom:12px;">Upload to Your Server First</h2>
+          <p style="color:#64748b;font-size:16px;max-width:480px;margin:0 auto 24px;line-height:1.7;">
+            Navigation to other pages works after you upload the files to your hosting server via FileZilla.
+            Opening as a local file only shows the Home page correctly.
+          </p>
+          <a href="javascript:location.reload()" style="background:linear-gradient(135deg,#B91C1C,#7F1D1D);color:#fff;padding:14px 28px;border-radius:10px;font-weight:700;text-decoration:none;">← Back to Home</a>
+        </div>`;
+    }
+  }
+
+  /* Make loadPage globally available for inline onclick handlers */
+  window.loadPage = loadPage;
+</script>
+
+</body>
+</html>

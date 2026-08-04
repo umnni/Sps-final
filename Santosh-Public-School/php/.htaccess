@@ -1,0 +1,7 @@
+# Block direct browser access to config/bootstrap files.
+# submit-admission.php, csrf.php stay reachable (the frontend calls them);
+# everything else here is only meant to be `require`-d by PHP.
+
+<FilesMatch "^(config|env)\.php$">
+    Require all denied
+</FilesMatch>
