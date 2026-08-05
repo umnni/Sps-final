@@ -977,9 +977,49 @@
       /* When opened via file://, fetch won't work for other pages.
          On the server (after FileZilla upload) it works perfectly.
          Home page is always pre-loaded in this file. */
-      if (page === 'home') {
-        location.reload();
-        return;
+      var content = document.getElementById('content');
+      if (!content) return;
+
+      try {
+        var response = await fetch('pages/' + page + '.html');
+        if (!response.ok) throw new Error('Page not found');
+        var html = await response.text();
+        content.innerHTML = html;
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        var mobileMenu = document.getElementById('mobileMenu');
+        if (mobileMenu) mobileMenu.classList.add('hidden');
+      } catch (err) {
+        /* Friendly message when running locally via file:// */
+        content.innerHTML = `
+        <div style="text-align:center;padding:80px 24px;">
+          <div style="font-size:60px;margin-bottom:20px;">🏫</div>
+          <h2 style="font-size:28px;font-weight:900;color:#1e293b;margin-bottom:12px;">Upload to Your Server First</h2>
+          <p style="color:#64748b;font-size:16px;max-width:480px;margin:0 auto 24px;line-height:1.7;">
+            Navigation to other pages works after you upload the files to your hosting server via FileZilla.
+            Opening as a local file only shows the Home page correctly.
+          </p>
+          <a href="javascript:location.reload()" style="background:linear-gradient(135deg,#B91C1C,#7F1D1D);color:#fff;padding:14px 28px;border-radius:10px;font-weight:700;text-decoration:none;">← Back to Home</a>
+        </div>`;
+      }
+    }
+
+    function getRouteFromLocation() {
+      var path = window.location.pathname;
+      var file = path.substring(path.lastIndexOf('/') + 1);
+      if (!file || file === 'index.html') {
+        return 'home';
+      }
+      return file.replace('.html', '');
+    }
+
+    async function loadPage(page, updateHistory) {
+      if (!page) {
+        page = getRouteFromLocation();
+      }
+
+      if (updateHistory !== false) {
+        var newUrl = page === 'home' ? 'index.html' : page + '.html';
+        window.history.pushState({ page: page }, '', newUrl);
       }
 
       var content = document.getElementById('content');
@@ -1007,6 +1047,23 @@
         </div>`;
       }
     }
+
+    window.addEventListener('popstate', function () {
+      loadPage(getRouteFromLocation(), false);
+    });
+
+    document.addEventListener('click', function (event) {
+      var anchor = event.target.closest('a');
+      if (!anchor) return;
+      var onclick = anchor.getAttribute('onclick');
+      if (onclick && onclick.indexOf('loadPage(') !== -1) {
+        event.preventDefault();
+      }
+    });
+
+    document.addEventListener('DOMContentLoaded', function () {
+      loadPage(getRouteFromLocation(), false);
+    });
 
     /* Make loadPage globally available for inline onclick handlers */
     window.loadPage = loadPage;
