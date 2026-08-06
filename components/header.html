@@ -24,7 +24,7 @@
     <div class="flex items-center justify-between h-20">
 
       <!-- Logo -->
-      <a href="#" onclick="loadPage('home')" class="flex items-center gap-3">
+      <a href="#" onclick="showIndexHome()" class="flex items-center gap-3">
         <img
           src="assets/images/school-logo.png"
           alt="Santosh Public School Logo"
@@ -43,7 +43,7 @@
 
       <!-- Desktop Menu -->
       <nav class="hidden lg:flex items-center gap-6 font-semibold text-sm text-gray-700">
-        <a href="#" onclick="loadPage('home')"      class="sps-nav-link hover:text-red-700 transition">Home</a>
+        <a href="#" onclick="showIndexHome()"      class="sps-nav-link hover:text-red-700 transition">Home</a>
         <a href="#" onclick="loadPage('about-us')"  class="sps-nav-link hover:text-red-700 transition">About</a>
         <a href="#" onclick="loadPage('admission')" class="sps-nav-link hover:text-red-700 transition">Admission</a>
         <a href="#" onclick="loadPage('blog')"      class="sps-nav-link hover:text-red-700 transition">Blog</a>
@@ -64,7 +64,7 @@
   <!-- Mobile Menu -->
   <div id="mobileMenu" class="hidden lg:hidden bg-white border-t border-gray-100 shadow-lg">
     <nav class="flex flex-col text-sm font-semibold">
-      <a href="#" onclick="loadPage('home');document.getElementById('mobileMenu').classList.add('hidden')"
+      <a href="#" onclick="showIndexHome();document.getElementById('mobileMenu').classList.add('hidden')"
          class="px-6 py-4 border-b border-gray-50 hover:bg-red-50 hover:text-red-700 transition">🏠 Home</a>
       <a href="#" onclick="loadPage('about-us');document.getElementById('mobileMenu').classList.add('hidden')"
          class="px-6 py-4 border-b border-gray-50 hover:bg-red-50 hover:text-red-700 transition">🏫 About Us</a>

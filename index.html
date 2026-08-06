@@ -964,6 +964,12 @@
 
   <!-- ========== SCRIPTS (no fetch, no modules — works on file://) ========== -->
   <script>
+    // Preserve the original home markup so we can restore it instead of fetching pages/home.html
+    var __originalIndexContent = (function(){
+      var el = document.getElementById('content');
+      return el ? el.innerHTML : '';
+    })();
+
     /* Mobile menu toggle */
     document.getElementById('menuBtn').addEventListener('click', function () {
       document.getElementById('mobileMenu').classList.toggle('hidden');
@@ -974,6 +980,15 @@
 
     /* ---- SPA Router (fetch-based, works when uploaded to server) ---- */
     async function loadPage(page) {
+      // If requested page is the home page, restore the inline index content
+      if (page === 'home') {
+        var contentEl = document.getElementById('content');
+        if (contentEl) contentEl.innerHTML = __originalIndexContent;
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        var mobileMenu = document.getElementById('mobileMenu');
+        if (mobileMenu) mobileMenu.classList.add('hidden');
+        return;
+      }
       /* When opened via file://, fetch won't work for other pages.
          On the server (after FileZilla upload) it works perfectly.
          Home page is always pre-loaded in this file. */
@@ -1013,6 +1028,19 @@
     }
 
     async function loadPage(page, updateHistory) {
+      // If requested page is the home page, restore the inline index content
+      if (page === 'home') {
+        var contentEl = document.getElementById('content');
+        if (contentEl) contentEl.innerHTML = __originalIndexContent;
+        if (updateHistory !== false) {
+          var newUrl = 'index.html';
+          window.history.pushState({ page: page }, '', newUrl);
+        }
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        var mobileMenu = document.getElementById('mobileMenu');
+        if (mobileMenu) mobileMenu.classList.add('hidden');
+        return;
+      }
       if (!page) {
         page = getRouteFromLocation();
       }

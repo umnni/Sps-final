@@ -1,0 +1,16 @@
+# Enable URL rewriting so SPA routes work on hard refresh.
+<IfModule mod_rewrite.c>
+  Options -MultiViews
+  RewriteEngine On
+
+  # If the request is for an existing file or directory, serve it directly
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+
+  # Otherwise rewrite to index.html (SPA entry)
+  RewriteRule ^ index.html [L]
+</IfModule>
+
+# Fallback DirectoryIndex
+DirectoryIndex index.html

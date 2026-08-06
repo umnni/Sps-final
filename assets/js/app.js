@@ -49,12 +49,27 @@ async function loadComponent(id, file) {
 }
 
 async function bootstrap() {
+    // Preserve the server-rendered index content as the canonical Home
+    const contentEl = document.getElementById("content");
+    window.indexHomeHtml = contentEl ? contentEl.innerHTML : "";
+
     await Promise.all([
         loadComponent("header", "components/header.html"),
         loadComponent("footer", "components/footer.html")
     ]);
 
-    loadPage("home");
+    // Expose a helper to restore the original index.html home content
+    window.showIndexHome = function () {
+        const c = document.getElementById("content");
+
+        if (!c) return;
+
+        if (window.indexHomeHtml && window.indexHomeHtml.length) {
+            c.innerHTML = window.indexHomeHtml;
+        }
+
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    };
 }
 
 document.addEventListener("DOMContentLoaded", bootstrap);
