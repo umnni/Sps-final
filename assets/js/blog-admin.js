@@ -714,7 +714,8 @@ function setupEvents() {
   document.getElementById('btnPreview').addEventListener('click', () => {
     const slug = document.getElementById('blogSlug').value;
     if (slug) {
-      window.open(`/blog/${slug}`, '_blank');
+      // Open fallback non-pretty URL to avoid Apache rewrite dependency
+      window.open(`/blog/index.php?slug=${encodeURIComponent(slug)}`, '_blank');
     } else {
       showToast('Save the blog first to generate a preview link', 'error');
     }

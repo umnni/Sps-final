@@ -80,7 +80,7 @@ export async function initBlogPage() {
           <div class="sps-blog-card-body">
             <h3 class="sps-blog-card-title">${blog.title}</h3>
             <p class="sps-blog-card-excerpt">${excerpt}</p>
-            <a href="/blog/${blog.slug}" class="sps-blog-card-link">Read More &rarr;</a>
+            <a href="/blog/index.php?slug=${blog.slug}" class="sps-blog-card-link">Read More &rarr;</a>
           </div>
         </article>
       `;
@@ -88,6 +88,37 @@ export async function initBlogPage() {
 
     blogGrid.innerHTML = html;
   }
+
+  // Try pretty URL first when a user clicks Read More, fallback to index.php
+  blogGrid.addEventListener('click', async (e) => {
+    const a = e.target.closest && e.target.closest('a.sps-blog-card-link');
+    if (!a) return;
+    e.preventDefault();
+
+    try {
+      // If our link already points to index.php, try pretty URL first
+      const url = new URL(a.href, window.location.origin);
+      const params = url.searchParams;
+      const slug = params.get('slug');
+
+      if (slug) {
+        const pretty = '/blog/' + slug;
+
+        // Try a HEAD request to the pretty URL
+        const res = await fetch(pretty, { method: 'HEAD' });
+        if (res.ok) {
+          window.location.href = pretty;
+          return;
+        }
+      }
+
+      // Fallback to the original href (index.php?slug=...)
+      window.location.href = a.href;
+    } catch (err) {
+      // On any error, go to the original href
+      window.location.href = a.href;
+    }
+  });
 
   function stripHtml(html) {
     const doc = new DOMParser().parseFromString(html, 'text/html');

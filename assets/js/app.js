@@ -7,6 +7,15 @@
 =========================================*/
 
 import { loadPage } from "./router.js";
+import { initAdmissionForm } from "./admission.js";
+import { initContactForm } from "./contact.js";
+import { initBlogPage } from "./blog.js";
+
+window.pageInitializers = {
+    admission: initAdmissionForm,
+    contact: initContactForm,
+    blog: initBlogPage
+};
 
 async function loadComponent(id, file) {
     const el = document.getElementById(id);

@@ -50,6 +50,7 @@ export async function loadPage(page) {
         }
 
         /* Run page-specific JS now that its HTML exists in the DOM */
+
         const init = pageInitializers[page];
 
         if (typeof init === "function") {

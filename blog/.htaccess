@@ -1,0 +1,15 @@
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /blog/
+
+  # If the request is for an existing file or directory, serve it directly
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+
+  # Otherwise send everything to index.php and pass the slug as query
+  RewriteRule ^(.*)$ index.php?slug=$1 [L,QSA]
+</IfModule>
+
+# Fallback: show a friendly 404 if rewrite isn't available
+ErrorDocument 404 /404.html

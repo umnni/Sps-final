@@ -54,28 +54,6 @@ export function initContactForm() {
     const email = form.querySelector('input[name="email"]');
     const message = form.querySelector('textarea[name="message"]');
     const submitBtn = document.getElementById("contactSubmitBtn");
-    const csrfField = document.getElementById("contactCsrfToken");
-
-    /*=========================================
-        CSRF Token
-        Fetch a fresh token for this session
-        and store it in the hidden field.
-    =========================================*/
-
-    function refreshCsrfToken() {
-        if (!csrfField) return;
-
-        fetch("php/csrf.php")
-            .then((res) => res.json())
-            .then((data) => {
-                if (data && data.token) {
-                    csrfField.value = data.token;
-                }
-            })
-            .catch((error) => console.error("Could not fetch CSRF token:", error));
-    }
-
-    refreshCsrfToken();
 
     /*=========================================
         Digits-only Mobile Input
@@ -91,7 +69,7 @@ export function initContactForm() {
         Form Submit
     =========================================*/
 
-    form.addEventListener("submit", async function (e) {
+    form.addEventListener("submit", function (e) {
 
         e.preventDefault();
 
@@ -127,65 +105,19 @@ export function initContactForm() {
             return;
         }
 
-        /* Loading State */
-
         submitBtn.disabled = true;
         const originalText = submitBtn.innerHTML;
+        submitBtn.innerHTML = "Sending...";
 
-        submitBtn.innerHTML = `
-            <svg class="animate-spin h-5 w-5" xmlns="http://www.w3.org/2000/svg"
-                 fill="none" viewBox="0 0 24 24">
-                <circle class="opacity-25" cx="12" cy="12" r="10"
-                        stroke="currentColor" stroke-width="4"></circle>
-                <path class="opacity-75" fill="currentColor"
-                      d="M4 12a8 8 0 018-8v8z"></path>
-            </svg>
-            Sending...
-        `;
+        const waUrl = buildWhatsAppUrl("CONTACT ENQUIRY", [
+            ["Name", nameField.value],
+            ["Mobile", mobile.value],
+            ["Email", email.value],
+            ["Message", message.value],
+        ]);
 
-        try {
-
-            const formData = new FormData(form);
-
-            const response = await fetch("php/submit-contact.php", {
-                method: "POST",
-                body: formData
-            });
-
-            let result;
-
-            try {
-                result = await response.json();
-            } catch (parseError) {
-                throw new Error("Unexpected server response.");
-            }
-
-            if (response.ok && result.status === "success") {
-
-                /* Build the WhatsApp message BEFORE the form is reset,
-                   so we still have the values the user typed in. */
-                const waUrl = buildWhatsAppUrl("CONTACT US PAGE - ENQUIRY", [
-                    ["Name", nameField?.value],
-                    ["Mobile", mobile?.value],
-                    ["Email", email?.value],
-                    ["Message", message?.value],
-                ]);
-
-                alert(result.message);
-                form.reset();
-                refreshCsrfToken();
-
-                /* Redirect to WhatsApp with the enquiry data pre-filled. */
-                window.location.href = waUrl;
-
-            } else {
-                showError(result.message || "Something went wrong. Please try again.");
-            }
-
-        } catch (error) {
-            console.error(error);
-            showError("Something went wrong. Please try again.");
-        }
+        form.reset();
+        window.location.href = waUrl;
 
         submitBtn.disabled = false;
         submitBtn.innerHTML = originalText;
