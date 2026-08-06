@@ -978,76 +978,40 @@
     /* Current year in footer */
     document.getElementById('currentYear').textContent = new Date().getFullYear();
 
-    /* ---- SPA Router (fetch-based, works when uploaded to server) ---- */
-    async function loadPage(page) {
-      // If requested page is the home page, restore the inline index content
-      if (page === 'home') {
-        var contentEl = document.getElementById('content');
-        if (contentEl) contentEl.innerHTML = __originalIndexContent;
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-        var mobileMenu = document.getElementById('mobileMenu');
-        if (mobileMenu) mobileMenu.classList.add('hidden');
-        return;
-      }
-      /* When opened via file://, fetch won't work for other pages.
-         On the server (after FileZilla upload) it works perfectly.
-         Home page is always pre-loaded in this file. */
-      var content = document.getElementById('content');
-      if (!content) return;
-
-      try {
-        var response = await fetch('pages/' + page + '.html');
-        if (!response.ok) throw new Error('Page not found');
-        var html = await response.text();
-        content.innerHTML = html;
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-        var mobileMenu = document.getElementById('mobileMenu');
-        if (mobileMenu) mobileMenu.classList.add('hidden');
-      } catch (err) {
-        /* Friendly message when running locally via file:// */
-        content.innerHTML = `
-        <div style="text-align:center;padding:80px 24px;">
-          <div style="font-size:60px;margin-bottom:20px;">🏫</div>
-          <h2 style="font-size:28px;font-weight:900;color:#1e293b;margin-bottom:12px;">Upload to Your Server First</h2>
-          <p style="color:#64748b;font-size:16px;max-width:480px;margin:0 auto 24px;line-height:1.7;">
-            Navigation to other pages works after you upload the files to your hosting server via FileZilla.
-            Opening as a local file only shows the Home page correctly.
-          </p>
-          <a href="javascript:location.reload()" style="background:linear-gradient(135deg,#B91C1C,#7F1D1D);color:#fff;padding:14px 28px;border-radius:10px;font-weight:700;text-decoration:none;">← Back to Home</a>
-        </div>`;
-      }
-    }
-
-    function getRouteFromLocation() {
-      var path = window.location.pathname;
-      var file = path.substring(path.lastIndexOf('/') + 1);
-      if (!file || file === 'index.html') {
+    /* ---- SPA Router (hash-based, works on GitHub Pages) ---- */
+    function getRouteFromHash() {
+      var hash = window.location.hash || '#home';
+      if (!hash || hash === '#') {
         return 'home';
       }
-      return file.replace('.html', '');
+      var page = hash.substring(1);
+      return page === '' ? 'home' : page;
     }
 
-    async function loadPage(page, updateHistory) {
-      // If requested page is the home page, restore the inline index content
+    function setHash(page) {
+      if (!page || page === 'home') {
+        window.location.hash = '#home';
+        return;
+      }
+      window.location.hash = '#' + page;
+    }
+
+    async function loadPage(page, updateHashLocation) {
+      if (!page) {
+        page = getRouteFromHash();
+      }
+
+      if (updateHashLocation !== false) {
+        setHash(page);
+      }
+
       if (page === 'home') {
         var contentEl = document.getElementById('content');
         if (contentEl) contentEl.innerHTML = __originalIndexContent;
-        if (updateHistory !== false) {
-          var newUrl = 'index.html';
-          window.history.pushState({ page: page }, '', newUrl);
-        }
         window.scrollTo({ top: 0, behavior: 'smooth' });
         var mobileMenu = document.getElementById('mobileMenu');
         if (mobileMenu) mobileMenu.classList.add('hidden');
         return;
-      }
-      if (!page) {
-        page = getRouteFromLocation();
-      }
-
-      if (updateHistory !== false) {
-        var newUrl = page === 'home' ? 'index.html' : page + '.html';
-        window.history.pushState({ page: page }, '', newUrl);
       }
 
       var content = document.getElementById('content');
@@ -1062,7 +1026,6 @@
         var mobileMenu = document.getElementById('mobileMenu');
         if (mobileMenu) mobileMenu.classList.add('hidden');
       } catch (err) {
-        /* Friendly message when running locally via file:// */
         content.innerHTML = `
         <div style="text-align:center;padding:80px 24px;">
           <div style="font-size:60px;margin-bottom:20px;">🏫</div>
@@ -1076,8 +1039,8 @@
       }
     }
 
-    window.addEventListener('popstate', function () {
-      loadPage(getRouteFromLocation(), false);
+    window.addEventListener('hashchange', function () {
+      loadPage(getRouteFromHash(), false);
     });
 
     document.addEventListener('click', function (event) {
@@ -1090,7 +1053,7 @@
     });
 
     document.addEventListener('DOMContentLoaded', function () {
-      loadPage(getRouteFromLocation(), false);
+      loadPage(getRouteFromHash(), false);
     });
 
     /* Make loadPage globally available for inline onclick handlers */

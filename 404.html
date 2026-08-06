@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Redirecting...</title>
+  <script>
+    (function() {
+      var routeMap = {
+        '/about-us.html': '#about-us',
+        '/admission.html': '#admission',
+        '/blog.html': '#blog',
+        '/contact.html': '#contact',
+        '/home.html': '#home',
+        '/index.html': '#home',
+        '/': '#home'
+      };
+
+      var path = window.location.pathname.replace(/\/+$/, '');
+      var hash = routeMap[path] || routeMap[path.toLowerCase()] || '#home';
+      var base = path.substring(0, path.lastIndexOf('/'));
+      if (base === '') base = '/';
+      var destination = base + '/index.html' + hash;
+      window.location.replace(destination);
+    })();
+  </script>
+</head>
+<body>
+  <p>Redirecting to the home app...</p>
+  <p>If you are not redirected, <a id="redirectLink" href="index.html">click here</a>.</p>
+  <script>
+    document.getElementById('redirectLink').href = window.location.pathname.replace(/\/[^\/]*$/, '/index.html');
+  </script>
+</body>
+</html>
