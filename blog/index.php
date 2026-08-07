@@ -1,6 +1,15 @@
 <?php
 declare(strict_types=1);
 
+// Detect the base path of the project so links work in both
+// subdirectory (localhost/Sps-final/) and root (/) deployments.
+$scriptPath = str_replace('\\', '/', dirname($_SERVER['SCRIPT_NAME']));
+// dirname of /Sps-final/blog/index.php => /Sps-final/blog
+// We want /Sps-final/ (the project root, one level up from /blog)
+$basePath = dirname($scriptPath);  // => /Sps-final
+if ($basePath !== '/') $basePath .= '/';
+else $basePath = '/';
+
 // Helper function to read blogs
 function readBlogs(): array {
     $blogsFile = __DIR__ . '/../php/storage/blogs.json';
@@ -20,7 +29,7 @@ if (empty($slug) && $uriSlug !== 'blog') {
 
 if (empty($slug)) {
     // If no slug, just redirect to blog list
-    header('Location: /?page=blog');
+    header('Location: ' . $basePath . '?page=blog');
     exit;
 }
 
@@ -41,7 +50,7 @@ foreach ($blogs as $b) {
 
 if (!$blog) {
     http_response_code(404);
-    echo "<h1>404 - Blog Post Not Found</h1><p><a href='/'>Return to Home</a></p>";
+    echo "<h1>404 - Blog Post Not Found</h1><p><a href='" . htmlspecialchars($basePath) . "'>Return to Home</a></p>";
     exit;
 }
 
@@ -113,8 +122,8 @@ $readingTime = ceil($wordCount / 200) ?: 1;
   </script>
   
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="../assets/css/style.css">
-  <link rel="stylesheet" href="../assets/css/blog.css">
+  <link rel="stylesheet" href="<?= $basePath ?>assets/css/style.css">
+  <link rel="stylesheet" href="<?= $basePath ?>assets/css/blog.css">
   
   <style>
     /* Content styling for output HTML */
@@ -133,14 +142,14 @@ $readingTime = ceil($wordCount / 200) ?: 1;
   <!-- Minimal Header for Blog Page -->
   <header class="bg-white shadow-md py-4">
       <div class="container mx-auto px-4 flex justify-between items-center">
-          <a href="/" class="flex items-center gap-2">
+          <a href="<?= $basePath ?>" class="flex items-center gap-2">
               <span class="text-xl font-bold text-blue-900">Santosh Public School</span>
           </a>
           <nav class="hidden md:flex gap-6">
-              <a href="/" class="text-gray-700 hover:text-red-700 font-medium transition">Home</a>
-              <a href="/?page=about-us" class="text-gray-700 hover:text-red-700 font-medium transition">About</a>
-              <a href="/?page=blog" class="text-gray-700 hover:text-red-700 font-medium transition">Blog</a>
-              <a href="/?page=contact" class="text-gray-700 hover:text-red-700 font-medium transition">Contact</a>
+              <a href="<?= $basePath ?>" class="text-gray-700 hover:text-red-700 font-medium transition">Home</a>
+              <a href="<?= $basePath ?>?page=about-us" class="text-gray-700 hover:text-red-700 font-medium transition">About</a>
+              <a href="<?= $basePath ?>?page=blog" class="text-gray-700 hover:text-red-700 font-medium transition">Blog</a>
+              <a href="<?= $basePath ?>?page=contact" class="text-gray-700 hover:text-red-700 font-medium transition">Contact</a>
           </nav>
       </div>
   </header>
@@ -148,14 +157,14 @@ $readingTime = ceil($wordCount / 200) ?: 1;
   <main class="flex-grow container mx-auto px-4 py-8 max-w-4xl">
       <!-- Breadcrumb -->
       <div class="text-sm text-gray-500 mb-6">
-          <a href="/" class="hover:text-blue-800">Home</a> &gt; 
-          <a href="/?page=blog" class="hover:text-blue-800">Blog</a> &gt; 
+          <a href="<?= $basePath ?>" class="hover:text-blue-800">Home</a> &gt; 
+          <a href="<?= $basePath ?>?page=blog" class="hover:text-blue-800">Blog</a> &gt; 
           <span class="text-gray-800"><?= $title ?></span>
       </div>
 
       <article class="bg-white rounded-xl shadow-sm overflow-hidden mb-8">
           <?php if ($featuredImage): ?>
-          <img src="/<?= ltrim($featuredImage, '/') ?>" alt="<?= $title ?>" class="w-full h-[300px] md:h-[450px] object-cover">
+          <img src="<?= $basePath . ltrim($featuredImage, '/') ?>" alt="<?= $title ?>" class="w-full h-[300px] md:h-[450px] object-cover">
           <?php endif; ?>
           
           <div class="p-6 md:p-10">
@@ -203,9 +212,9 @@ $readingTime = ceil($wordCount / 200) ?: 1;
           <h2 class="text-2xl font-bold text-gray-900 mb-6">Related Articles</h2>
           <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
               <?php foreach ($related as $rel): ?>
-              <a href="/blog/<?= $rel['slug'] ?>" class="group bg-white rounded-xl shadow-sm overflow-hidden hover:shadow-md transition">
+              <a href="<?= $basePath ?>blog/<?= $rel['slug'] ?>" class="group bg-white rounded-xl shadow-sm overflow-hidden hover:shadow-md transition">
                   <?php if (!empty($rel['featuredImage'])): ?>
-                  <img src="/<?= ltrim($rel['featuredImage'], '/') ?>" alt="<?= htmlspecialchars($rel['title']) ?>" class="w-full h-48 object-cover group-hover:scale-105 transition duration-300">
+                  <img src="<?= $basePath . ltrim($rel['featuredImage'], '/') ?>" alt="<?= htmlspecialchars($rel['title']) ?>" class="w-full h-48 object-cover group-hover:scale-105 transition duration-300">
                   <?php else: ?>
                   <div class="w-full h-48 bg-gray-200 flex items-center justify-center text-gray-400">No Image</div>
                   <?php endif; ?>
@@ -220,7 +229,7 @@ $readingTime = ceil($wordCount / 200) ?: 1;
       <?php endif; ?>
       
       <div class="text-center mb-8">
-          <a href="/?page=blog" class="inline-block bg-blue-900 text-white font-medium py-2 px-6 rounded-lg hover:bg-blue-800 transition">
+          <a href="<?= $basePath ?>?page=blog" class="inline-block bg-blue-900 text-white font-medium py-2 px-6 rounded-lg hover:bg-blue-800 transition">
               &larr; Back to all articles
           </a>
       </div>

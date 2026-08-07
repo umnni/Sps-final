@@ -2,11 +2,15 @@
 <IfModule mod_rewrite.c>
   Options -MultiViews
   RewriteEngine On
+  RewriteBase /Sps-final/
 
   # If the request is for an existing file or directory, serve it directly
   RewriteCond %{REQUEST_FILENAME} -f [OR]
   RewriteCond %{REQUEST_FILENAME} -d
   RewriteRule ^ - [L]
+
+  # Blog pretty URLs: /Sps-final/blog/my-slug -> blog/index.php?slug=my-slug
+  RewriteRule ^blog/(.+)$ blog/index.php?slug=$1 [L,QSA]
 
   # Otherwise rewrite to index.html (SPA entry)
   RewriteRule ^ index.html [L]
